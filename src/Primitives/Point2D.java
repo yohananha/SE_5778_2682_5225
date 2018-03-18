@@ -1,4 +1,4 @@
 package Primitives;
 
-public class Point {
+public class Point2D {
 }
