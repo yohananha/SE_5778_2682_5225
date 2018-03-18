@@ -44,7 +44,10 @@ public class Point3D extends Point2D {
     public int compareTo(Point3D point3D);
     public String toString();
     // ***************** Operations ******************** //
-    public void add(Vector vector);
+    public void add(Vector vector)
+    {
+
+    };
     public void subtract(Vector vector);
     public double distance(Point3D point);
 }
