@@ -5,7 +5,11 @@ public class Point2D {
     protected Coordinate _x;
     protected Coordinate _y;
     // ***************** Constructors ********************** //
-    public Point2D(){}
+    public Point2D()
+    {
+        _x = new Coordinate();
+        _y = new Coordinate();
+    }
     public Point2D(Coordinate x, Coordinate y)
     {
         _x = x;
