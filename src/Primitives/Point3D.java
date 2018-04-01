@@ -23,7 +23,12 @@ public class Point3D extends Point2D {
         _y = new Coordinate(y);
         _z = new Coordinate(z);
     }
-    public Point3D(Point3D point3D);
+    public Point3D(Point3D point3D)
+    {
+        _x = new Coordinate(point3D._x);
+        _y = new Coordinate(point3D._y);
+        _z = new Coordinate(point3D._z);
+    };
     // ***************** Getters/Setters ********************** //
     public Coordinate get_z() {
         return _z;
@@ -41,12 +46,23 @@ public class Point3D extends Point2D {
     }
 
     // ***************** Administration ******************** //
-    public int compareTo(Point3D point3D);
-    public String toString();
+    public int compareTo(Point3D point3D)
+    {
+        if(this._x.compareTo(point3D._x) == 1 &&
+                this._y.compareTo(point3D._y) == 1 &&
+                this._z.compareTo(point3D._z) == 1)
+            return 1;
+        else return 0;
+    };
+    public String toString()
+    {
+       return ("x: " + this._x + "\n"+
+               "y: " + this._y + "\n"+
+               "z: " + this._z + "\n");
+    };
     // ***************** Operations ******************** //
     public void add(Vector vector)
     {
-
     };
     public void subtract(Vector vector);
     public double distance(Point3D point);

@@ -2,17 +2,25 @@ package Primitives;
 
 public class Coordinate {
     private double _coordinate;
+
     // ***************** Constructors ********************** //
-    public Coordinate(){
+    public Coordinate() {
         _coordinate = 0.0f;
-    };
-    public Coordinate(double coordinate)
-    {
+    }
+
+    ;
+
+    public Coordinate(double coordinate) {
         _coordinate = coordinate;
-    };
-    public Coordinate(Coordinate coordinate){
+    }
+
+    ;
+
+    public Coordinate(Coordinate coordinate) {
         _coordinate = coordinate._coordinate;
-    };
+    }
+
+    ;
 
     // ***************** Getters/Setters ********************** //
     public double getCoordinate() {
@@ -24,7 +32,12 @@ public class Coordinate {
     }
 
     // ***************** Administration ******************** //
-    public int compareTo(Coordinate coordinate);
+    public int compareTo(Coordinate coordinate)
+    {
+        if (this == coordinate)
+            return 1;
+        else return 0;
+    };
 
     // ***************** Operations ******************** //
     public void add (Coordinate coordinate)
@@ -34,6 +47,5 @@ public class Coordinate {
     public void subtract (Coordinate coordinate)
     {
         this._coordinate-=coordinate._coordinate;
-
     };
 }
