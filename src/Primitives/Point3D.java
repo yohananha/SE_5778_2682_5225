@@ -1,5 +1,10 @@
 package Primitives;
 
+import java.lang.Math;
+
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 public class Point3D extends Point2D {
 
 
@@ -63,7 +68,19 @@ public class Point3D extends Point2D {
     // ***************** Operations ******************** //
     public void add(Vector vector)
     {
+        _x.add(vector.getHead().getX());
+        _y.add(vector.getHead().getY());
+        _z.add(vector.getHead().get_z());
     };
-    public void subtract(Vector vector);
-    public double distance(Point3D point);
+    public void subtract(Vector vector)
+    {
+        _x.subtract(vector.getHead().getX());
+        _y.subtract(vector.getHead().getY());
+        _z.subtract(vector.getHead().get_z());
+    };
+
+    public double distance(Point3D point)
+    {
+
+    }
 }
