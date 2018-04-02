@@ -39,6 +39,12 @@ public class Coordinate {
         else return 0;
     };
 
+    @Override
+    public String toString()
+    {
+        return String.format("%.2F",_coordinate);
+    }
+
     // ***************** Operations ******************** //
     public void add (Coordinate coordinate)
     {

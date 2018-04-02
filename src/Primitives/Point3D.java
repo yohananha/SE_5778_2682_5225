@@ -52,9 +52,7 @@ public class Point3D extends Point2D {
     };
     public String toString()
     {
-       return ("x: " + this._x + "\n"+
-               "y: " + this._y + "\n"+
-               "z: " + this._z + "\n");
+       return "(" + _x + "," + _y + "," + _z + ")" ;
     };
     // ***************** Operations ******************** //
     public void add(Vector vector)
