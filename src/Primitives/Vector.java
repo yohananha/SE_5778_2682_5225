@@ -21,8 +21,10 @@ public class Vector{
     };
     public Vector(Point3D p1, Point3D p2)
     {
-
-    };
+        _head = new Point3D(p2._x.getCoordinate() - p1._x.getCoordinate() ,
+                            p2._y.getCoordinate() - p1._y.getCoordinate() ,
+                            p2._z.getCoordinate() - p1._z.getCoordinate() );
+    }
     // ***************** Getters/Setters ********************** //
     public Point3D getHead(){
         return _head;
