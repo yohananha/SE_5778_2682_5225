@@ -35,6 +35,7 @@ public class Point2D {
         this._y = _y;
     }
 
+
     // ***************** Administration ******************** //
     public int compareTo(Point2D point2D)
     {

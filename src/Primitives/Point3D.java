@@ -1,14 +1,11 @@
 package Primitives;
 
-import java.lang.Math;
-
-import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class Point3D extends Point2D {
 
 
-    private Coordinate _z;
+    protected Coordinate _z;
     // ***************** Constructors ********************** //
     public Point3D()
     {
@@ -35,22 +32,16 @@ public class Point3D extends Point2D {
         _z = new Coordinate(point3D._z);
     };
     // ***************** Getters/Setters ********************** //
-    public Coordinate get_z() {
+    public Coordinate getZ() {
         return _z;
     }
 
     public void set_z(Coordinate _z) {
         this._z = _z;
     }
-    public Coordinate getZ() {
-        return _z;
-    }
 
-    public void setZ(Coordinate _z) {
-        this._z = _z;
-    }
 
-    // ***************** Administration ******************** //
+     // ***************** Administration ******************** //
     public int compareTo(Point3D point3D)
     {
         if(this._x.compareTo(point3D._x) == 1 &&
@@ -70,17 +61,25 @@ public class Point3D extends Point2D {
     {
         _x.add(vector.getHead().getX());
         _y.add(vector.getHead().getY());
-        _z.add(vector.getHead().get_z());
+        _z.add(vector.getHead().getZ());
     };
     public void subtract(Vector vector)
     {
         _x.subtract(vector.getHead().getX());
         _y.subtract(vector.getHead().getY());
-        _z.subtract(vector.getHead().get_z());
+        _z.subtract(vector.getHead().getZ());
     };
+
+    //==help function to perform power of doubles
+    private double pow (double power)
+    {
+        return power*power;
+    }
 
     public double distance(Point3D point)
     {
-
+        return sqrt(pow(getX().getCoordinate()-point.getX().getCoordinate())+
+                    pow(getY().getCoordinate()-point.getY().getCoordinate()+
+                    pow(getZ().getCoordinate()-point.getZ().getCoordinate())));
     }
 }
