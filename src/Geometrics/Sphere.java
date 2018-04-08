@@ -1,5 +1,5 @@
 package Geometrics;
-
+/*
 public class Sphere {
 
     private Point3D _center;
@@ -16,3 +16,4 @@ public class Sphere {
     public Vector getNormal(Point3D point);
 
 }
+*/

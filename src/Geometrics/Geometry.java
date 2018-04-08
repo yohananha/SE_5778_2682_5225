@@ -1,5 +1,5 @@
 package Geometrics;
-
+/*
 public class Geometry {
 
     private Material _material = new Material();
@@ -18,3 +18,4 @@ public class Geometry {
     public void setKr(double Kr);
     public void setKt(double Kt);
 }
+*/

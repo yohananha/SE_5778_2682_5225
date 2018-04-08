@@ -1,5 +1,5 @@
 package Geometrics;
-
+/*
 public class Triangle {
 
     private Point3D _p1;
@@ -22,3 +22,4 @@ public class Triangle {
     public List<Point3D> FindIntersections(Ray ray);
 
 }
+*/

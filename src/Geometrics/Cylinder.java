@@ -1,5 +1,5 @@
 package Geometrics;
-
+/*
 public class Cylinder {
 
     private Point3D _axisPoint;
@@ -19,3 +19,4 @@ public class Cylinder {
 
 
 }
+*/

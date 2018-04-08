@@ -1,5 +1,5 @@
 package Geometrics;
-
+/*
 public class Plane {
 
     private Vector _normal;
@@ -17,3 +17,4 @@ public class Plane {
     public List<Point3D> FindIntersections(Ray ray);
 
 }
+*/
