@@ -40,7 +40,6 @@ public class Point3D extends Point2D {
         this._z = _z;
     }
 
-
      // ***************** Administration ******************** //
     public int compareTo(Point3D point3D)
     {
@@ -50,9 +49,10 @@ public class Point3D extends Point2D {
             return 1;
         else return 0;
     };
+    @Override
     public String toString()
     {
-       return "(" + _x + "," + _y + "," + _z + ")" ;
+       return "(" + _x + ", " + _y + ", " + _z + ")" ;
     };
     // ***************** Operations ******************** //
     public void add(Vector vector)

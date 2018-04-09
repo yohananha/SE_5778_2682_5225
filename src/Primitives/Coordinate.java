@@ -34,7 +34,7 @@ public class Coordinate {
     // ***************** Administration ******************** //
     public int compareTo(Coordinate coordinate)
     {
-        if (this == coordinate)
+        if (this._coordinate == coordinate.getCoordinate())
             return 1;
         else return 0;
     };
