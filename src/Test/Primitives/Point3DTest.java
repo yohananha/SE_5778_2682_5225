@@ -58,6 +58,6 @@ public class Point3DTest {
     public void toStringTest() {
         Point3D p = new Point3D(1.111,2.234,3.459);
         String result = p.toString();
-        assertEquals("(1.11, 2.34, 3.46)", result);
+        assertEquals("(1.11, 2.23, 3.46)", result);
     }
 }

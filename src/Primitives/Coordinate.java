@@ -42,7 +42,7 @@ public class Coordinate {
     @Override
     public String toString()
     {
-        return String.format("%.2F",_coordinate);
+        return String.format("%.2f",_coordinate);
     }
 
     // ***************** Operations ******************** //
