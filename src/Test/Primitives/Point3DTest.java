@@ -60,4 +60,30 @@ public class Point3DTest {
         String result = p.toString();
         assertEquals("(1.11, 2.23, 3.46)", result);
     }
+
+    // ***************** Operations Test********************
+    @Test
+    public void add() {
+        Point3D p1 = new Point3D(1,1,1);
+        Vector p2 = new Vector(1,1,1);
+        p1.add(p2);
+        assertEquals(1,p1.compareTo(new Point3D(2,2,2)),0);
+    }
+
+    @Test
+    public void subtract() {
+        Point3D p1 = new Point3D(3,3,3);
+        Vector p2 = new Vector(1,1,1);
+        p1.subtract(p2);
+        assertEquals(1,p1.compareTo(new Point3D(2,2,2)),0);
+    }
+
+    @Test
+    public void distance() {
+        Point3D p1 = new Point3D(5,4,1);
+        Point3D p2 = new Point3D(1,1,1);
+        assertEquals(5,p1.distance(p2),0);
+
+
+    }
 }
