@@ -37,6 +37,7 @@ public class Vector{
     public int compareTo(Vector vector){
         return _head.compareTo(vector._head);
     };
+    @Override
     public String toString()
     {
         return _head.toString();
@@ -59,7 +60,7 @@ public class Vector{
     public Vector crossProduct(Vector vector)
     {
         Vector vector1 = new Vector(_head._y.getCoordinate()*vector._head.getZ().getCoordinate()-_head._z.getCoordinate()*vector._head.getY().getCoordinate(),
-                                    _head._x.getCoordinate()*vector._head.getZ().getCoordinate()-_head._z.getCoordinate()*vector._head.getX().getCoordinate()*-1,
+                                    _head._z.getCoordinate()*vector._head.getX().getCoordinate()-_head._x.getCoordinate()*vector._head.getZ().getCoordinate(),
                                     _head._x.getCoordinate()*vector._head.getY().getCoordinate()-_head._y.getCoordinate()*vector._head.getX().getCoordinate());
 
         return vector1;
