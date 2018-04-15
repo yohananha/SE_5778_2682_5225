@@ -72,17 +72,15 @@ public class Vector{
     };
     public void normalize() throws Exception
     {
-        try {
             double vecLen = length();
             if (vecLen ==0)
                 throw new Exception("0");
             _head._x.setCoordinate(_head.getX().getCoordinate()/vecLen);
             _head._y.setCoordinate(_head.getY().getCoordinate()/vecLen);
             _head._z.setCoordinate(_head.getZ().getCoordinate()/vecLen);
-        }
-        catch (Exception ex) {
+
             return;
-        }
+
     }; // Throws exception if length = 0
     public double dotProduct(Vector vector)
     {

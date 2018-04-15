@@ -76,8 +76,8 @@ public class Point3D extends Point2D {
 
     public double distance(Point3D point)
     {
-        return sqrt(pow(getX().getCoordinate()-point.getX().getCoordinate())+
-                    pow(getY().getCoordinate()-point.getY().getCoordinate()+
-                    pow(getZ().getCoordinate()-point.getZ().getCoordinate())));
+        return sqrt(pow(getX().getCoordinate() - point.getX().getCoordinate() ) +
+                    pow(getY().getCoordinate() - point.getY().getCoordinate() ) +
+                    pow(getZ().getCoordinate() - point.getZ().getCoordinate() ) );
     }
 }

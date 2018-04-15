@@ -68,8 +68,8 @@ public class VectorTest {
 
     @Test
     public void length() {
-        Vector v1 = new Vector(3.5,-2,0);
-        assertEquals(v1.length(),4.031128874,0.000000001);
+        Vector v1 = new Vector(2,-2,1);
+        assertEquals(v1.length(),3,0);
     }
 
     @Test
@@ -77,9 +77,9 @@ public class VectorTest {
     {
         Vector v1 = new Vector(-2,2,1);
         v1.normalize();
-        double a = 2/3;
-        double b =1/3;
-        assertEquals(v1.compareTo(new Vector(-a,a,b)),0,0);
+        double a = (double)2/3;
+        double b = (double)1/3;
+        assertEquals(v1.compareTo(new Vector(-a,a,b)),1,0);
     }
 
     @Test
