@@ -53,7 +53,7 @@ public class Point2D {
     public int compareTo(Point2D point2D)
     {
         if(_x.compareTo(point2D._x) == 1 && _y.compareTo(point2D._y) == 1)
-            return 1;
-        else return 0;
+            return 0;
+        else return 1;
     };
 }

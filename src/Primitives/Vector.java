@@ -189,7 +189,7 @@ public class Vector{
     {
             double vecLen = length();
             if (vecLen ==0)
-                throw new Exception("0");
+                throw new ArithmeticException("0");
             _head._x.setCoordinate(_head.getX().getCoordinate()/vecLen);
             _head._y.setCoordinate(_head.getY().getCoordinate()/vecLen);
             _head._z.setCoordinate(_head.getZ().getCoordinate()/vecLen);

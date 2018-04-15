@@ -59,8 +59,8 @@ public class Point3D extends Point2D {
         if(this._x.compareTo(point3D._x) == 1 &&
                 this._y.compareTo(point3D._y) == 1 &&
                 this._z.compareTo(point3D._z) == 1)
-            return 1;
-        else return 0;
+            return 0;
+        else return 1;
     };
 
     /*************************************************
