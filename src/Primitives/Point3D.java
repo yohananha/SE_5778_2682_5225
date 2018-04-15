@@ -41,6 +41,19 @@ public class Point3D extends Point2D {
     }
 
      // ***************** Administration ******************** //
+
+    /*************************************************
+     * FUNCTION
+     * compareTo
+     * PARAMETERS
+     * Point3d
+     * RETURN VALUE
+     * 0/1
+     * MEANING
+     * This functions compare between two points to check if they are equals
+     * If eqauls returns 1
+     * Else return 0
+     **************************************************/
     public int compareTo(Point3D point3D)
     {
         if(this._x.compareTo(point3D._x) == 1 &&
@@ -49,18 +62,52 @@ public class Point3D extends Point2D {
             return 1;
         else return 0;
     };
+
+    /*************************************************
+     * FUNCTION
+     * toString
+     * PARAMETERS
+     * none
+     * RETURN VALUE
+     * Format string of coordinate
+     * MEANING
+     * This function return the coordinate by format that declared before
+     **************************************************/
     @Override
     public String toString()
     {
        return "(" + _x + ", " + _y + ", " + _z + ")" ;
     };
+
     // ***************** Operations ******************** //
+
+    /*************************************************
+     * FUNCTION
+     * add
+     * PARAMETERS
+     * vector
+     * RETURN VALUE
+     * none
+     * MEANING
+     * This function add two points, by taking the parameters from vectors' point
+     **************************************************/
     public void add(Vector vector)
     {
         _x.add(vector.getHead().getX());
         _y.add(vector.getHead().getY());
         _z.add(vector.getHead().getZ());
     };
+
+    /*************************************************
+     * FUNCTION
+     * subtract
+     * PARAMETERS
+     * vector
+     * RETURN VALUE
+     * none
+     * MEANING
+     * This function subtract two points, by taking the parameters from vectors' point
+     **************************************************/
     public void subtract(Vector vector)
     {
         _x.subtract(vector.getHead().getX());
@@ -68,12 +115,35 @@ public class Point3D extends Point2D {
         _z.subtract(vector.getHead().getZ());
     };
 
-    //==help function to perform power of doubles
+    /*************************************************
+     * FUNCTION
+     * pow
+     * PARAMETERS
+     * double
+     * RETURN VALUE
+     * double
+     * MEANING
+     * This function gets double number and returns the power by 2 of the number
+     * uses as help functions to the distance function
+     **************************************************/
     private double pow (double power)
     {
         return power*power;
     }
 
+    /*************************************************
+     * FUNCTION
+     * distance
+     * PARAMETERS
+     * point3d
+     * RETURN VALUE
+     * double - distance
+     * MEANING
+     * This function calcuate the dustane between two points in space
+     * Distance calculates by taking squart of adding 3 points' powered by 2
+     * SEE ALSO
+     * pow function - help function
+     **************************************************/
     public double distance(Point3D point)
     {
         return sqrt(pow(getX().getCoordinate() - point.getX().getCoordinate() ) +

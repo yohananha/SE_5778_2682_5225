@@ -37,6 +37,19 @@ public class Point2D {
 
 
     // ***************** Administration ******************** //
+
+    /*************************************************
+     * FUNCTION
+     * compareTo
+     * PARAMETERS
+     * point2d
+     * RETURN VALUE
+     * 0/1
+     * MEANING
+     * This functions compare between two points to check if they are equals
+     * If eqauls returns 1
+     * Else return 0
+     **************************************************/
     public int compareTo(Point2D point2D)
     {
         if(_x.compareTo(point2D._x) == 1 && _y.compareTo(point2D._y) == 1)
