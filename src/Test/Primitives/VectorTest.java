@@ -75,11 +75,17 @@ public class VectorTest {
     @Test
     public void normalize() throws Exception
     {
-        Vector v1 = new Vector(-2,2,1);
-        v1.normalize();
-        double a = (double)2/3;
-        double b = (double)1/3;
-        assertEquals(v1.compareTo(new Vector(-a,a,b)),1,0);
+        try {
+            Vector v1 = new Vector(0, 0, 0);
+            v1.normalize();
+            double a = (double) 2 / 3;
+            double b = (double) 1 / 3;
+            assertEquals(v1.compareTo(new Vector(-a, a, b)), 1, 0);
+        }
+        catch (Exception mas)
+        {
+            System.out.println(mas.getMessage());
+        }
     }
 
     @Test
