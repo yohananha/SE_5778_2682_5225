@@ -9,7 +9,6 @@ public class Triangle {
     public Triangle();
     public Triangle(Triangle triangle);
     public Triangle(Point3D p1, Point3D p2, Point3D p3);
-    public Triangle(Map<String, String> attributes);
     // ***************** Getters/Setters ********************** //
     public Point3D getP1();
     public Point3D getP2();

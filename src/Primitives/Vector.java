@@ -214,5 +214,5 @@ public class Vector{
         return (_head.getX().getCoordinate()*vector._head.getX().getCoordinate()+
                 _head.getY().getCoordinate()*vector._head.getY().getCoordinate()+
                 _head.getZ().getCoordinate()*vector._head.getZ().getCoordinate());
-    };
+    }
 }
