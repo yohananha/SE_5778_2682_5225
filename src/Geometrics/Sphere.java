@@ -1,19 +1,54 @@
 package Geometrics;
-/*
-public class Sphere {
+
+import Primitives.*;
+
+import java.awt.*;
+import java.util.List;
+import java.util.Map;
+
+public class Sphere extends Geometry {
 
     private Point3D _center;
+    private double _radius;
+
     // ***************** Constructors ********************** //
-    public Sphere();
-    public Sphere (Sphere sphere);
-    public Sphere(double radius, Point3D center);
+    public Sphere() {
+        _center = new Point3D();
+        _radius = 0;
+    }
+
+    public Sphere(Sphere sphere) {
+        this._center = sphere.getCenter();
+        this._radius = sphere.getRadius();
+    }
+
+    public Sphere(double radius, Point3D center) {
+        this._center = center;
+        this._radius = radius;
+    }
+
     public Sphere(Map<String, String> attributes);
+
     // ***************** Getters/Setters ********************** //
-    public Point3D getCenter();
-    public void setCenter(Point3D center);
+    public Point3D getCenter() {
+        return this._center;
+    }
+
+    public double getRadius() {
+        return this._radius;
+    }
+
+    public void setRadius(double radius) {
+        this._radius = radius;
+    }
+
+    public void setCenter(Point3D center) {
+        this._center = center;
+    }
+
     // ***************** Operations ******************** //
     public List<Point3D> FindIntersections(Ray ray);
+
     public Vector getNormal(Point3D point);
 
 }
-*/

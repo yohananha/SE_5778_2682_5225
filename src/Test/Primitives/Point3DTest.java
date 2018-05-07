@@ -1,3 +1,4 @@
+/*
 package Primitives;
 
 import org.junit.Test;
@@ -35,7 +36,9 @@ public class Point3DTest {
         assertEquals(1.11,p1.getZ().getCoordinate(),0);
     }
 
-    //-----------------------SET TEST------------------------------
+*/
+/*
+   //-----------------------SET TEST------------------------------
 
     @Test
     public void set_z1() {
@@ -86,4 +89,4 @@ public class Point3DTest {
 
 
     }
-}
+}*/
