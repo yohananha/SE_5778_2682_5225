@@ -115,6 +115,8 @@ public class Point3D extends Point2D {
         _z.subtract(vector.getHead().getZ());
     };
 
+
+
     /*************************************************
      * FUNCTION
      * pow

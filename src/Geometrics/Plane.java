@@ -44,7 +44,9 @@ public class Plane extends Geometry {
     }
 
     // ***************** Operations ******************** //
-    public Vector getNormal(Point3D point);
+    public Vector getNormal(Point3D point) {
+        return _normal;
+    }
 
     public List<Point3D> FindIntersections(Ray ray);
 

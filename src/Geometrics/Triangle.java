@@ -1,7 +1,7 @@
 package Geometrics;
 
 import Primitives.*;
-
+import Elements.Camera;
 import java.util.List;
 
 public class Triangle extends Geometry {
@@ -55,8 +55,29 @@ public class Triangle extends Geometry {
     }
 
     // ***************** Operations ******************** //
-    public Vector getNormal(Point3D point);
+    public Vector getNormal(Point3D point) {
 
-    public List<Point3D> FindIntersections(Ray ray);
+        // Setting the U vector
+        Vector vecU = new Vector(_p1.getX().getCoordinate()-_p2.getX().getCoordinate(),
+                                 _p1.getY().getCoordinate()-_p2.getY().getCoordinate(),
+                                 _p1.getZ().getCoordinate()-_p2.getZ().getCoordinate());
+        // Setting the V vector
+        Vector vecV = new Vector(_p1.getX().getCoordinate()-_p3.getX().getCoordinate(),
+                                 _p1.getY().getCoordinate()-_p3.getY().getCoordinate(),
+                                 _p1.getZ().getCoordinate()-_p3.getZ().getCoordinate());
+
+        // Finding the normal vector and normalize it
+        Vector _normal = new Vector(vecU.crossProduct(vecV)).normalize();
+        _normal.scale(-1);
+
+        return _normal;
+    }
+
+    ;
+
+    public List<Point3D> FindIntersections(Ray ray)
+    {
+
+    };
 
 }
