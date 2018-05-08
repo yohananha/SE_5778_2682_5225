@@ -27,7 +27,7 @@ public class Sphere extends Geometry {
         this._radius = radius;
     }
 
-    public Sphere(Map<String, String> attributes);
+//    public Sphere(Map<String, String> attributes);
 
     // ***************** Getters/Setters ********************** //
     public Point3D getCenter() {

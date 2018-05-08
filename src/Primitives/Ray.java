@@ -1,6 +1,6 @@
 package Primitives;
 
-public class Ray {
+public class Ray extends Vector{
     // Point of origin
     private Point3D _POO;
     // Ray direction
@@ -29,4 +29,12 @@ public class Ray {
     public void setDirection(Vector _direction){this._direction = _direction;}
     public Vector getDirection(){return _direction;}
     public Point3D getPOO(){return _POO;}
+
+    public  void subtract(Ray _ray)
+    {
+        Vector v = new Vector(_ray.getPOO());
+        _POO.subtract(v);
+        _direction.subtract(_ray.getDirection());
+    }
+
 }

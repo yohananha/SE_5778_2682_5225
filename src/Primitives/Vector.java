@@ -98,6 +98,11 @@ public class Vector{
         _head.add(vector);
     }
 
+    public void add(Point3D pc) {
+        Vector _pc = new Vector(pc);
+        add(_pc);
+    }
+
     /*************************************************
      * FUNCTION
      * subtract
@@ -115,6 +120,7 @@ public class Vector{
     {
         _head.subtract(vector);
     }
+
 
     /*************************************************
      * FUNCTION
@@ -215,4 +221,6 @@ public class Vector{
                 _head.getY().getCoordinate()*vector._head.getY().getCoordinate()+
                 _head.getZ().getCoordinate()*vector._head.getZ().getCoordinate());
     }
+
+
 }
