@@ -4,6 +4,7 @@ import Primitives.Point3D;
 import Primitives.Ray;
 import Primitives.Vector;
 
+
 public class Camera {
 
     // ***************** Administration ********************** //
@@ -80,17 +81,6 @@ public class Camera {
         this._vRight = _vRight;
     }
 
-  /*  public Vector get_vUp();
-
-    public void set_vUp(Vector vUp);
-
-    public Vector get_vTo();
-
-    public void set_vTo(Vector vTo);
-
-    public Point3D getP0 ();
-
-    public void setP0(Point3D P0);*/
 
     // ***************** Operations ******************** //
     public Ray constructRayThroughPixel(int Nx, int Ny,
