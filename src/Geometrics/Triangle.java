@@ -2,6 +2,8 @@ package Geometrics;
 
 import Primitives.*;
 import Elements.Camera;
+
+import java.util.LinkedList;
 import java.util.List;
 
 public class Triangle extends Geometry {
@@ -55,7 +57,7 @@ public class Triangle extends Geometry {
     }
 
     // ***************** Operations ******************** //
-    public Vector getNormal(Point3D point) {
+    public Vector getNormal(Point3D point) throws Exception {
 
         // Setting the U vector
         Vector vecU = new Vector(_p1.getX().getCoordinate()-_p2.getX().getCoordinate(),
@@ -67,7 +69,8 @@ public class Triangle extends Geometry {
                                  _p1.getZ().getCoordinate()-_p3.getZ().getCoordinate());
 
         // Finding the normal vector and normalize it
-        Vector _normal = new Vector(vecU.crossProduct(vecV)).normalize();
+        Vector _normal = new Vector(vecU.crossProduct(vecV));
+        _normal.normalize();
         _normal.scale(-1);
 
         return _normal;
@@ -78,6 +81,6 @@ public class Triangle extends Geometry {
     public List<Point3D> FindIntersections(Ray ray)
     {
 
-    };
+    }
 
 }
