@@ -47,13 +47,18 @@ public class Sphere extends Geometry {
     }
 
     // ***************** Operations ******************** //
-    public List<Point3D> FindIntersections(Ray ray);
+    public List<Point3D> FindIntersections(Ray ray)
+    {
 
-    public Vector getNormal(Point3D point){
+    };
+
+    public Vector getNormal(Point3D point) throws Exception {
         Vector vec =  new Vector(_center.getX().getCoordinate()-point.getX().getCoordinate(),
                                     _center.getY().getCoordinate()-point.getY().getCoordinate(),
                                     _center.getZ().getCoordinate()-point.getZ().getCoordinate());
         vec.normalize();
-    };
+
+        return vec;
+    }
 
 }

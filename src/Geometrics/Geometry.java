@@ -13,7 +13,7 @@ public abstract class Geometry {
 
     public abstract List<Point3D> FindIntersections(Ray ray);
 
-    public abstract Vector getNormal(Point3D point);
+    public abstract Vector getNormal(Point3D point) throws Exception;
 
     // ***************** Getters/Setters ********************** //
     public double getShininess() {

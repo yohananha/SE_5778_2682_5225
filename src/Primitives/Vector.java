@@ -193,12 +193,17 @@ public class Vector{
      **************************************************/
     public void normalize() throws Exception
     {
+        try {
             double vecLen = length();
-            if (vecLen ==0)
+            if (vecLen == 0)
                 throw new ArithmeticException("0");
-            _head._x.setCoordinate(_head.getX().getCoordinate()/vecLen);
-            _head._y.setCoordinate(_head.getY().getCoordinate()/vecLen);
-            _head._z.setCoordinate(_head.getZ().getCoordinate()/vecLen);
+            _head._x.setCoordinate(_head.getX().getCoordinate() / vecLen);
+            _head._y.setCoordinate(_head.getY().getCoordinate() / vecLen);
+            _head._z.setCoordinate(_head.getZ().getCoordinate() / vecLen);
+        }catch (ArithmeticException a)
+        {
+            return;
+        }
 
             return;
 
