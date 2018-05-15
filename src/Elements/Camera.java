@@ -1,8 +1,6 @@
 package Elements;
 
-import Primitives.Point3D;
-import Primitives.Ray;
-import Primitives.Vector;
+import Primitives.*;
 
 
 public class Camera {

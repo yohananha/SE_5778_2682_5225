@@ -53,26 +53,31 @@ public class Sphere extends Geometry {
     public List<Point3D> FindIntersections(Ray ray) throws Exception {
 
         List<Point3D> ListInter = new LinkedList<Point3D>();
-
+        // 1. Define the L vector
         double L = new Vector(this._center.getX().getCoordinate() - ray.getPOO().getX().getCoordinate(),
                 this._center.getY().getCoordinate() - ray.getPOO().getY().getCoordinate(),
                 this._center.getZ().getCoordinate() - ray.getPOO().getZ().getCoordinate()).length();
 
+        // 2. Find the tm
         ray.getDirection().normalize();
         Vector V = new Vector(ray);
         ray.getDirection().scale(L);
         double tm = ray.length();
-
+        // 3. Find d
         double d = sqrt(L*L - tm*tm);
 
+        // 4. Case 1 - No Intersections
         if(d > this._radius)
             return ListInter;
 
+        // 5. find TH - Half of the ray insde the sphere
         double th = sqrt(this._radius*this._radius - d*d);
 
+        // 6. Define t1 t2 - Two parts of the th line
         double t1 = tm - th;
         double t2 = tm + th;
 
+        // 7. Case 2 - there's at least ons intersection
         if(t1>0)
         {
             V.normalize();
