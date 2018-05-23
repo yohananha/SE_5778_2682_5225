@@ -100,9 +100,7 @@ public class Sphere extends Geometry {
     };
 
     public Vector getNormal(Point3D point) throws Exception {
-        Vector vec =  new Vector(_center.getX().getCoordinate()-point.getX().getCoordinate(),
-                                    _center.getY().getCoordinate()-point.getY().getCoordinate(),
-                                    _center.getZ().getCoordinate()-point.getZ().getCoordinate());
+        Vector vec =  new Vector(_center,point);
         vec.normalize();
 
         return vec;

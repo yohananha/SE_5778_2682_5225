@@ -1,17 +1,19 @@
 package Test.Elements;
 
 import Elements.Camera;
-import Primitives.*;
-import org.junit.*;
+import Primitives.Point3D;
+import Primitives.Ray;
+import Primitives.Vector;
+import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static junit.framework.TestCase.fail;
 
 public class CameraTest {
 
     //@Test
     //public String toString() {
-      //  return null;
+    //  return null;
     //}
 
     @Test
@@ -65,7 +67,7 @@ public class CameraTest {
                 System.out.print(screen[i][j]);
                 System.out.println(ray.getDirection());
 // Checking z-coordinate
-                assertTrue(Double.compare(screen[i][j].getZ().getCoordinate(),-1.0) == 0);
+                assertTrue(Double.compare(screen[i][j].getZ().getCoordinate(),0.0) == 0);
 // Checking all options
                 double x = screen[i][j].getX().getCoordinate();
                 double y = screen[i][j].getX().getCoordinate();

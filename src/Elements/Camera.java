@@ -47,7 +47,7 @@ public class Camera {
 
     };
 
-   /// public Camera(Map<String, String> attributes);
+    /// public Camera(Map<String, String> attributes);
 
     // ***************** Getters/Setters ********************** //
     public Point3D get_P0() {
@@ -86,8 +86,7 @@ public class Camera {
     // ***************** Operations ******************** //
     public Ray constructRayThroughPixel(int Nx, int Ny, // Screen size
                                         double x, double y, // Point
-                                        double screenDist, double screenWidth, double screenHeight)
-    {
+                                        double screenDist, double screenWidth, double screenHeight) throws Exception {
         // Define image center
         Vector tempTo = new Vector(_vTo);
         tempTo.scale(screenDist);
@@ -107,13 +106,34 @@ public class Camera {
 
         vRight.subtract(vUp);
         vRight.add(_Pc);
+         return new Ray(_P0, vRight);
 
-        return new Ray(_P0, vRight);
+
+         //---nachum
+        //// Calculating P - the intersection point
+        //Vector vRight = new Vector(_vRight);
+        //Vector vUp = new Vector(_vUp);
+
+        //vRight.scale(((x - (Nx/2.0)) * _Rx + 0.5 * _Rx));
+        //vUp. scale(((y - (Ny/2.0)) * _Ry + 0.5 * _Ry));
+
+        //vRight.subtract(vUp);
+        //_Pc.add(vRight);
+
+        //Point3D P = new Point3D(_Pc);
+
+        //// constructing ray between P0 and the intersection point
+        //Vector ray = new Vector(_P0, P);
+        //ray.normalize();
+
+        //// returning the constructed ray
+        //return new Ray(P, ray);
+
 
     };
 
     private double multiRay(double x, int xN, double xR)
     {
-       return  ((x-(((double)xN/2))*xR)+(xR/2));
+        return  ((x-(((double)xN/2))*xR)+(xR/2));
     }
 }
