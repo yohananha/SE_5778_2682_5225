@@ -16,7 +16,7 @@ public class Vector{
 
     public Vector(Vector vector)
     {
-        this._head= vector._head;
+        this._head= vector.getHead();
     };
 
     public Vector(double xHead, double yHead, double zHead)
