@@ -30,19 +30,20 @@ public class Camera {
 
     public Camera(Camera camera)
     {
-        _P0 = camera._P0;
-        _vUp = camera._vUp;
-        _vTo = camera._vTo;
-        _vRight = camera._vRight;
+        _P0 = new Point3D(camera.get_P0());
+        _vUp = new Vector(camera.get_vUp());
+        _vTo = new Vector(camera.get_vTo());
+        _vRight = new Vector(camera.get_vRight());
     };
 
     public Camera(Point3D P0, Vector vUp, Vector vTo) throws Exception {
-        _P0 = P0;
-        _vUp = vUp;
-        _vTo = vTo;
+        _P0 = new Point3D(P0);
+        _vUp =new Vector(vUp);
+        _vTo = new Vector(vTo);
         _vTo.normalize();
         _vUp.normalize();
-        _vRight = new Vector(vUp.crossProduct(vTo));
+        _vRight = new Vector(_vUp.crossProduct(vTo));
+        _vUp.crossProduct(_vRight);
         _vRight.normalize();
 
     };
@@ -88,52 +89,39 @@ public class Camera {
                                         double x, double y, // Point
                                         double screenDist, double screenWidth, double screenHeight) throws Exception {
         // Define image center
+        Vector vRight = new Vector(_vRight);
+        Vector vUp = new Vector(_vUp);
+
+
+
         Vector tempTo = new Vector(_vTo);
         tempTo.scale(screenDist);
-        Point3D _Pc = new Point3D(_P0);
-        _Pc.add(tempTo);
+        Point3D _P0 = new Point3D(get_P0());
+        _P0.add(tempTo);
 
         // Define the Ratio
         double _Rx = screenWidth/Nx;
         double _Ry = screenHeight/Ny;
 
         // Rays for ray construct
-        Vector vRight = new Vector(_vRight);
-        vRight.scale(multiRay(x, Nx, _Rx));
-
-        Vector vUp = new Vector(_vUp);
-        vUp.scale(multiRay(y, Ny, _Ry));
+        vRight.scale((x - (Nx/2.0)) * _Rx + 0.5 * _Rx);
+        vUp.scale((y - (Ny/2.0)) * _Ry + 0.5 * _Ry);
 
         vRight.subtract(vUp);
-        vRight.add(_Pc);
-         return new Ray(_P0, vRight);
+        _P0.add(vRight);
 
+        Point3D p = new Point3D((_P0));
+         Vector ray =  new Vector(_P0, p);
+         ray.normalize();
 
-         //---nachum
-        //// Calculating P - the intersection point
-        //Vector vRight = new Vector(_vRight);
-        //Vector vUp = new Vector(_vUp);
+         return new Ray(p,ray);
 
-        //vRight.scale(((x - (Nx/2.0)) * _Rx + 0.5 * _Rx));
-        //vUp. scale(((y - (Ny/2.0)) * _Ry + 0.5 * _Ry));
-
-        //vRight.subtract(vUp);
-        //_Pc.add(vRight);
-
-        //Point3D P = new Point3D(_Pc);
-
-        //// constructing ray between P0 and the intersection point
-        //Vector ray = new Vector(_P0, P);
-        //ray.normalize();
-
-        //// returning the constructed ray
-        //return new Ray(P, ray);
 
 
     };
 
     private double multiRay(double x, int xN, double xR)
     {
-        return  ((x-(((double)xN/2))*xR)+(xR/2));
+        return  ((x-((xN*0.5)*xR)+(xR*0.5)));
     }
 }
