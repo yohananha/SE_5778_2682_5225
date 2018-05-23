@@ -27,9 +27,9 @@ public class Point3D extends Point2D {
     }
     public Point3D(Point3D point3D)
     {
-        _x = new Coordinate(point3D._x);
-        _y = new Coordinate(point3D._y);
-        _z = new Coordinate(point3D._z);
+        _x = new Coordinate(point3D.getX());
+        _y = new Coordinate(point3D.getY());
+        _z = new Coordinate(point3D.getZ());
     };
     // ***************** Getters/Setters ********************** //
     public Coordinate getZ() {
