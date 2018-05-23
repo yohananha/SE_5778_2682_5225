@@ -54,17 +54,13 @@ public class Sphere extends Geometry {
 
         List<Point3D> ListInter = new LinkedList<Point3D>();
         // 1. Define the L vector
-        double L = new Vector(this._center.getX().getCoordinate() - ray.getPOO().getX().getCoordinate(),
-                this._center.getY().getCoordinate() - ray.getPOO().getY().getCoordinate(),
-                this._center.getZ().getCoordinate() - ray.getPOO().getZ().getCoordinate()).length();
+        Vector L = new Vector(ray.getPOO(), this.getCenter());
 
         // 2. Find the tm
-        ray.getDirection().normalize();
-        Vector V = new Vector(ray);
-        ray.getDirection().scale(L);
-        double tm = ray.length();
+        double tm = L.dotProduct(ray.getDirection());
+
         // 3. Find d
-        double d = sqrt(L*L - tm*tm);
+        double d = Math.sqrt(Math.pow(L.length(), 2) - Math.pow(tm, 2));
 
         // 4. Case 1 - No Intersections
         if(d > this._radius)
@@ -80,20 +76,20 @@ public class Sphere extends Geometry {
         // 7. Case 2 - there's at least ons intersection
         if(t1>0)
         {
-            V.normalize();
+            Vector V = new Vector(ray.getDirection());
             V.scale(t1);
-            ListInter.add(new Point3D(ray.getPOO().getX().getCoordinate() + V.getHead().getX().getCoordinate(),
-                    ray.getPOO().getY().getCoordinate() + V.getHead().getY().getCoordinate(),
-                    ray.getPOO().getZ().getCoordinate() + V.getHead().getZ().getCoordinate()));
+            Point3D P1 = new Point3D(ray.getPOO());
+            P1.add(V);
+            ListInter.add(P1);
         }
 
         if(t2>0)
         {
-            V.normalize();
+            Vector V = new Vector(ray.getDirection());
             V.scale(t2);
-            ListInter.add(new Point3D(ray.getPOO().getX().getCoordinate() + V.getHead().getX().getCoordinate(),
-                    ray.getPOO().getY().getCoordinate() + V.getHead().getY().getCoordinate(),
-                    ray.getPOO().getZ().getCoordinate() + V.getHead().getZ().getCoordinate()));
+            Point3D P2 = new Point3D(ray.getPOO());
+            P2.add(V);
+            ListInter.add(P2);
         }
 
         return ListInter;

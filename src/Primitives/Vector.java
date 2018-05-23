@@ -16,7 +16,7 @@ public class Vector{
 
     public Vector(Vector vector)
     {
-        this._head= vector._head;
+        this._head= new Point3D(vector.getHead());
     };
 
     public Vector(double xHead, double yHead, double zHead)
@@ -134,9 +134,15 @@ public class Vector{
      **************************************************/
     public void scale(double scalingFactor)
     {
-        _head._x.setCoordinate(_head.getX().getCoordinate()*scalingFactor);
-        _head._y.setCoordinate(_head.getY().getCoordinate()*scalingFactor);
-        _head._z.setCoordinate(_head.getZ().getCoordinate()*scalingFactor);
+
+        this._head.setX(new Coordinate(
+                scalingFactor * _head.getX().getCoordinate()));
+
+        this._head.setY(new Coordinate(
+                scalingFactor * _head.getY().getCoordinate()));
+
+        this._head.set_z(new Coordinate(
+                scalingFactor * _head.getZ().getCoordinate()));
     }
 
     /*************************************************

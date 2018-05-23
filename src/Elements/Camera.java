@@ -96,8 +96,8 @@ public class Camera {
 
         Vector tempTo = new Vector(_vTo);
         tempTo.scale(screenDist);
-        Point3D _P0 = new Point3D(get_P0());
-        _P0.add(tempTo);
+        Point3D _Pc = new Point3D(get_P0());
+        _Pc.add(tempTo);
 
         // Define the Ratio
         double _Rx = screenWidth/Nx;
@@ -108,9 +108,9 @@ public class Camera {
         vUp.scale((y - (Ny/2.0)) * _Ry + 0.5 * _Ry);
 
         vRight.subtract(vUp);
-        _P0.add(vRight);
+        _Pc.add(vRight);
 
-        Point3D p = new Point3D((_P0));
+        Point3D p = new Point3D((_Pc));
          Vector ray =  new Vector(_P0, p);
          ray.normalize();
 

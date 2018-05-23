@@ -12,8 +12,7 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class SphereTest
-{
+public class SphereTest {
 
     @Test
     public void testIntersectionPoints() throws Exception {
@@ -41,14 +40,15 @@ public class SphereTest
                 for (Point3D iPoint : rayIntersectionPoints2)
                     intersectionPointsSphere2.add(iPoint);
             }
-            assertTrue(intersectionPointsSphere.size() == 2);
-            assertTrue(intersectionPointsSphere2.size() == 9);
-            System.out.println("Intersection Points:");
-            for (Point3D iPoint : intersectionPointsSphere) {
-                assertTrue(iPoint.compareTo(new Point3D(0.0, 0.0, -2.0)) == 0 ||
-                        iPoint.compareTo(new Point3D(0.0, 0.0, -4.0)) == 0);
-                System.out.println(iPoint);
-            }
+        }
+        assertTrue(intersectionPointsSphere.size() == 2);
+        assertTrue(intersectionPointsSphere2.size() == 9);
+        System.out.println("Intersection Points:");
+        for (Point3D iPoint : intersectionPointsSphere) {
+            assertTrue(iPoint.compareTo(new Point3D(0.0, 0.0, -2.0)) == 0 ||
+                    iPoint.compareTo(new Point3D(0.0, 0.0, -4.0)) == 0);
+            System.out.println(iPoint);
         }
     }
+
 }
