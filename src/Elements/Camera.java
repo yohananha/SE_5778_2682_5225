@@ -120,8 +120,4 @@ public class Camera {
 
     };
 
-    private double multiRay(double x, int xN, double xR)
-    {
-        return  ((x-((xN*0.5)*xR)+(xR*0.5)));
-    }
 }
