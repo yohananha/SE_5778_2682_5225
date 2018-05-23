@@ -22,10 +22,10 @@ public class Camera {
     // ***************** Constructors ********************** //
     public Camera()
     {
-        _P0 = new Point3D();
-        _vUp = new Vector();
-        _vTo = new Vector();
-        _vRight = new Vector();
+        _P0 = new Point3D(0,0,0);
+        _vUp = new Vector(0,1,0);
+        _vTo = new Vector(0,0,-1);
+        _vRight = new Vector(1,0,0);
     };
 
     public Camera(Camera camera)
@@ -36,12 +36,15 @@ public class Camera {
         _vRight = camera._vRight;
     };
 
-    public Camera(Point3D P0, Vector vUp, Vector vTo)
-    {
+    public Camera(Point3D P0, Vector vUp, Vector vTo) throws Exception {
         _P0 = P0;
         _vUp = vUp;
         _vTo = vTo;
+        _vTo.normalize();
+        _vUp.normalize();
         _vRight = new Vector(vUp.crossProduct(vTo));
+        _vRight.normalize();
+
     };
 
    /// public Camera(Map<String, String> attributes);
@@ -81,8 +84,8 @@ public class Camera {
 
 
     // ***************** Operations ******************** //
-    public Ray constructRayThroughPixel(int Nx, int Ny,
-                                        double x, double y,
+    public Ray constructRayThroughPixel(int Nx, int Ny, // Screen size
+                                        double x, double y, // Point
                                         double screenDist, double screenWidth, double screenHeight)
     {
         // Define image center
@@ -90,8 +93,9 @@ public class Camera {
         tempTo.scale(screenDist);
         Point3D _Pc = new Point3D(_P0);
         _Pc.add(tempTo);
+
         // Define the Ratio
-        double _Rx = screenDist/Nx;
+        double _Rx = screenWidth/Nx;
         double _Ry = screenHeight/Ny;
 
         // Rays for ray construct
@@ -105,7 +109,6 @@ public class Camera {
         vRight.add(_Pc);
 
         return new Ray(_P0, vRight);
-
 
     };
 

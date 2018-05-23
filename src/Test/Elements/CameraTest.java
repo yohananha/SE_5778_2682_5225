@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class CameraTest {
 
-    @Test
-    public String toString() {
-        return null;
-    }
+    //@Test
+    //public String toString() {
+      //  return null;
+    //}
 
     @Test
     public void get_P0() {
@@ -47,7 +47,7 @@ public class CameraTest {
     }
 
     @Test
-    public void testRaysConstruction(){
+    public void testRaysConstruction() throws Exception {
         final int WIDTH = 3;
         final int HEIGHT = 3;
         Point3D[][] screen = new Point3D [HEIGHT][WIDTH];
@@ -65,7 +65,7 @@ public class CameraTest {
                 System.out.print(screen[i][j]);
                 System.out.println(ray.getDirection());
 // Checking z-coordinate
-                assertTrue(Double.compare(screen[i][j].getZ().getCoordinate(), -1.0) == 0);
+                assertTrue(Double.compare(screen[i][j].getZ().getCoordinate(),-1.0) == 0);
 // Checking all options
                 double x = screen[i][j].getX().getCoordinate();
                 double y = screen[i][j].getX().getCoordinate();
