@@ -8,12 +8,10 @@ public class Coordinate {
         _coordinate = 0.0f;
     };
 
-    public Coordinate(double coordinate) {
-        _coordinate = coordinate;
-    };
+    public Coordinate(double coordinate) {_coordinate = coordinate;};
 
     public Coordinate(Coordinate coordinate) {
-        _coordinate = coordinate._coordinate;
+        _coordinate = coordinate.getCoordinate();
     };
 
     // ***************** Getters/Setters ********************** //
