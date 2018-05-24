@@ -84,7 +84,7 @@ public class Triangle extends Geometry {
         List<Point3D> ListInter = new LinkedList<Point3D>();
 
         //find P0
-        Point3D P0 = ray.getPOO();
+        Point3D P0 = new Point3D(ray.getPOO());
 
         //find the triangle's Normal
         Vector N = this.getNormal(this.getP1());
@@ -106,21 +106,21 @@ public class Triangle extends Geometry {
         //checking side 1-2
         Vector V1_1 = new Vector(P0, this._p1);
         Vector V2_1 = new Vector(P0, this._p2);
-        Vector N1 = V1_1.crossProduct(V2_1);
+        Vector N1 = new Vector(V1_1.crossProduct(V2_1));
         N1.normalize();
         double S1 = -P_P0.dotProduct(N1);
 
         //checking side 2-3
         Vector V1_2 = new Vector(P0, this._p2);
         Vector V2_2 = new Vector(P0, this._p3);
-        Vector N2 = V1_2.crossProduct(V2_2);
+        Vector N2 = new Vector(V1_2.crossProduct(V2_2));
         N2.normalize();
         double S2 = -P_P0.dotProduct(N2);
 
         //checking side 3-1
         Vector V1_3 = new Vector(P0, this._p3);
         Vector V2_3 = new Vector(P0, this._p1);
-        Vector N3 = V1_3.crossProduct(V2_3);
+        Vector N3 = new Vector(V1_3.crossProduct(V2_3));
         N3.normalize();
         double S3 = -P_P0.dotProduct(N3);
 

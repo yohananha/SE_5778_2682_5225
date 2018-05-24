@@ -53,34 +53,22 @@ public class Plane extends Geometry {
 
     public List<Point3D> FindIntersections(Ray ray) {
         List<Point3D> ListInter = new LinkedList<Point3D>();
-        Vector p0 = new Vector(ray.getPOO());
+        Point3D p0 = new Point3D(ray.getPOO());
         Point3D q0 = new Point3D(_Q);
-        Vector N = new Vector(_normal);
+        Vector N = new Vector(this.getNormal());
         Vector V = new Vector(ray.getDirection());
 
         // For internal use only
-        Vector intVec = new Vector();
-
-        Vector v = new Vector(q0);
+        Vector v = new Vector (q0, p0);
 
         // calculate t:
-        intVec = N;
-        intVec.scale(-1);
-        Vector Nminus = new Vector(intVec);
-
-        intVec = p0;
-        intVec.subtract(new Vector(q0));
-        Vector pq0 = new Vector(intVec);
-
-        double nv = V.dotProduct(N);
-        pq0.scale(1 / nv);
-        double t = Nminus.dotProduct(pq0);
+        double t = (N.dotProduct(v) * -1) / N.dotProduct(V);
 
         if (t >= 0) {
             V.scale(t);
             p0.add(V);
 
-            ListInter.add(p0.getHead());
+            ListInter.add(p0);
 
         }
         return ListInter;
