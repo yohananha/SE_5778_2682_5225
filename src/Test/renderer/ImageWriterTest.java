@@ -16,9 +16,9 @@ public class ImageWriterTest {
             for (int j = 0; j < imageWriter.getWidth(); j++)
             {
 
-                if (i % 25 == 0 || j % 25 == 0 || i == j || i == 499 || j == 499 || i == 500 - j)
+             /*   if (i % 25 == 0 || j % 25 == 0 || i == j || i == 499 || j == 499 || i == 500 - j)
                     imageWriter.writePixel(j, i, 0, 0, 0);  // Black
-                else
+                else*/
                 if(i >= 0 && i <= 166 && j >= 0 && j <= 500)
                     imageWriter.writePixel(j, i, 255, 0, 0); // Red
                 else
