@@ -8,8 +8,8 @@ public class AmbientLight extends Light {
 
     // ***************** Constructors ********************** //
     public AmbientLight() {
-        _color = new Color(255, 255, 255);
-        _Ka = 0.1;
+        _color = new Color(0, 0, 0);
+        _Ka = 1;
     }
 
     public AmbientLight(AmbientLight aLight) {
@@ -19,7 +19,7 @@ public class AmbientLight extends Light {
 
     public AmbientLight(int r, int g, int b) {
         this._color = new Color(r, g, b);
-        this._Ka = 0.1;
+        this._Ka = 1;
     }
 
     public AmbientLight(Color _color, double ka) {
