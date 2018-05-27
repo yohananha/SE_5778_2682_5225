@@ -123,13 +123,13 @@ public class Render
 
     /*************************************************
      * FUNCTION
-     * getIntensity
+     * getClosestPoint
      * PARAMETERS
-     * N\A
+     * Map (geometry, list(point3d))
      * RETURN VALUE
-     * color
+     * Map (geometry, point3d)
      * MEANING
-     * This function returns the color of the geomtry using the ambient light
+     * this functions takes all the points and calculate the closest one to the camera
      **************************************************/
      private Map<Geometry, Point3D> getClosestPoint(Map<Geometry,List<Point3D>> intersectionPoints){
 
@@ -151,8 +151,17 @@ public class Render
          minDistancMap.put(minDistancGeometry,minDistancPoint);
          return minDistancMap;
      }
-
-    private  Point3D getClosestPoint(List<Point3D> intersectionPoints){
+   /* /*************************************************
+     * FUNCTION
+     * getClosestPoint
+     * PARAMETERS
+     *  list(point3d)
+     * RETURN VALUE
+     * point3d
+     * MEANING
+     * this functions takes all the points and calculate the closest one to the camera
+     **************************************************/
+   /* private  Point3D getClosestPoint(List<Point3D> intersectionPoints){
 
         double distance = Double.MAX_VALUE;
         Point3D P0 = new Point3D(_scene.getCamera().get_P0());
@@ -166,7 +175,17 @@ public class Render
         }
 
         return minDistancPoint;
-    }
+    }*/
+    /*************************************************
+     * FUNCTION
+     * getSceneRayIntersections
+     * PARAMETERS
+     * ray
+     * RETURN VALUE
+     * Map (geometry, point3d)
+     * MEANING
+     * this functions takes all the points and calculate the closest one to the camera
+     **************************************************/
     private Map<Geometry, List<Point3D>> getSceneRayIntersections(Ray ray) throws Exception {
         Iterator<Geometry> geometryIterator = _scene.getGeometriesIterator();
         Map<Geometry, List<Point3D>> intersectionPoint = new HashMap<Geometry, List<Point3D>>();
