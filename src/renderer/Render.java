@@ -29,6 +29,16 @@ public class Render
     }
 
     // ***************** Operations ******************** //
+    /*************************************************
+     * FUNCTION
+     * renderImage
+     * PARAMETERS
+     * N\A
+     * RETURN VALUE
+     * color
+     * MEANING
+     * This function conpute each pixel in the scene to th right color
+     **************************************************/
     public void renderImage() throws Exception {
         for (int i = 0 ; i < _imageWriter.getWidth(); i++){
             for (int j = 0; j < _imageWriter.getHeight(); j++){
@@ -50,6 +60,16 @@ public class Render
 
     //private Entry<Geometry, Point3D> findClosesntIntersection(Ray ray);
 
+    /*************************************************
+     * FUNCTION
+     * printGrid
+     * PARAMETERS
+     * int
+     * RETURN VALUE
+     * N/A
+     * MEANING
+     * This function prints white grid on the scene
+     **************************************************/
     public void printGrid(int interval){
         int height = _imageWriter.getHeight();
         int width = _imageWriter.getWidth();
@@ -64,10 +84,20 @@ public class Render
         }
     }
 
-    public void writeToImage(){
+        public void writeToImage(){
         _imageWriter.writeToimage();
     }
 
+    /*************************************************
+     * FUNCTION
+     * calcColor
+     * PARAMETERS
+     * Geometry, point3d
+     * RETURN VALUE
+     * color
+     * MEANING
+     * This function calculate color for point with his geometry color
+     **************************************************/
     private Color calcColor(Geometry geometry, Point3D point){
         Color ambientLight = _scene.getAmbientLight().getIntensity();
         Color emissionLight = geometry.getEmmission();
@@ -92,6 +122,17 @@ public class Render
     //                                Vector l, double shininess, Color lightIntensity);
     // private Color calcDiffusiveComp(double kd, Vector normal, Vector l,
     //                                 Color lightIntensity);
+
+    /*************************************************
+     * FUNCTION
+     * getIntensity
+     * PARAMETERS
+     * N\A
+     * RETURN VALUE
+     * color
+     * MEANING
+     * This function returns the color of the geomtry using the ambient light
+     **************************************************/
      private Map<Geometry, Point3D> getClosestPoint(Map<Geometry,List<Point3D>> intersectionPoints){
 
          double distance = Double.MAX_VALUE;

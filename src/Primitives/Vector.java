@@ -62,21 +62,21 @@ public class Vector{
         return _head.compareTo(vector._head);
     }
 
-    /*************************************************
-     * FUNCTION
-     * toString
-     * PARAMETERS
-     * none
-     * RETURN VALUE
-     * Format string of coordinate
-     * MEANING
-     * This function return the head's coordinate by format that declared before
-     **************************************************/
-    @Override
-    public String toString()
-    {
-        return _head.toString();
-    }
+        /*************************************************
+         * FUNCTION
+         * toString
+         * PARAMETERS
+         * none
+         * RETURN VALUE
+         * Format string of coordinate
+         * MEANING
+         * This function return the head's coordinate by format that declared before
+         **************************************************/
+        @Override
+        public String toString()
+        {
+            return _head.toString();
+        }
 
     // ***************** Operations ******************** //
 
@@ -210,9 +210,7 @@ public class Vector{
         {
             return;
         }
-
             return;
-
     }
 
     /*************************************************

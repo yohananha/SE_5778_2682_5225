@@ -44,21 +44,21 @@ public class Coordinate {
         else return 0;
     };
 
-    @Override
-    /*************************************************
-     * FUNCTION
-     * toString
-     * PARAMETERS
-     * none
-     * RETURN VALUE
-     * Format string of coordinate
-     * MEANING
-     * This function return the coordinate by specific format
-     **************************************************/
-    public String toString()
-    {
-        return String.format("%.2f",_coordinate);
-    }
+        @Override
+        /*************************************************
+         * FUNCTION
+         * toString
+         * PARAMETERS
+         * none
+         * RETURN VALUE
+         * Format string of coordinate
+         * MEANING
+         * This function return the coordinate by specific format
+         **************************************************/
+        public String toString()
+        {
+            return String.format("%.2f",_coordinate);
+        }
 
     // ***************** Operations ******************** //
 

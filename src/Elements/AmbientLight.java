@@ -40,6 +40,16 @@ public class AmbientLight extends Light {
         return _Ka;
     }
 
+    /*************************************************
+     * FUNCTION
+     * getIntensity
+     * PARAMETERS
+     * N\A
+     * RETURN VALUE
+     * color
+     * MEANING
+     * This function returns the color of the geomtry using the ambient light
+     **************************************************/
     public Color getIntensity() {
         return new Color((int) (_color.getRed() * _Ka),
                 (int) (_color.getGreen() * _Ka),

@@ -50,6 +50,19 @@ public class Sphere extends Geometry {
     }
 
     // ***************** Operations ******************** //
+
+    /*************************************************
+     * FUNCTION
+     * FindIntersections
+     * PARAMETERS
+     * ray
+     * RETURN VALUE
+     * List<Point3D>
+     * MEANING
+     * This functions computes a all the intersections of specific ray with the sphere
+     * SEE ALSO
+     * Geomerty-> FindIntersections
+     /*********************************************/
     public List<Point3D> FindIntersections(Ray ray) throws Exception {
 
         List<Point3D> ListInter = new LinkedList<Point3D>();

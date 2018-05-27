@@ -58,6 +58,18 @@ public class Triangle extends Geometry {
     }
 
     // ***************** Operations ******************** //
+    /*************************************************
+     * FUNCTION
+     * getNormal
+     * PARAMETERS
+     * Point3D point
+     * RETURN VALUE
+     * Vector who is the normal to the point
+     * MEANING
+     * This functions computes a normal vector into specific point
+     * SEE ALSO
+     * Vector->Normalize
+     **************************************************/
     public Vector getNormal(Point3D point) throws Exception {
 
         // Setting the U vector
@@ -77,8 +89,18 @@ public class Triangle extends Geometry {
         return _normal;
     }
 
-    ;
-
+    /*************************************************
+     * FUNCTION
+     * FindIntersections
+     * PARAMETERS
+     * ray
+     * RETURN VALUE
+     * List<Point3D>
+     * MEANING
+     * This functions computes a all the intersections of specific ray with the triangle
+     * SEE ALSO
+     * Geomerty-> FindIntersections
+     **************************************************/
     public List<Point3D> FindIntersections(Ray ray) throws Exception
     {
         List<Point3D> ListInter = new LinkedList<Point3D>();
@@ -126,12 +148,7 @@ public class Triangle extends Geometry {
 
         if (((S1 > 0) && (S2 > 0) && (S3 > 0)) || ((S1 < 0) && (S2 < 0) && (S3 < 0)))
             ListInter.add(intersectionPlane);
-
-
         return ListInter;
-
-
-
 
     }
 

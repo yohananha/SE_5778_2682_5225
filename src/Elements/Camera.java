@@ -85,6 +85,18 @@ public class Camera {
 
 
     // ***************** Operations ******************** //
+    /*************************************************
+     * FUNCTION
+     * constructRayThroughPixel
+     * PARAMETERS
+     * int Nx, int Ny, // Screen size
+     * double x, double y, // Point
+     * double screenDist, double screenWidth, double screenHeight
+     * RETURN VALUE
+     * Ray
+     * MEANING
+     * This function sends ray through pixel into the view plane
+     **************************************************/
     public Ray constructRayThroughPixel(int Nx, int Ny, // Screen size
                                         double x, double y, // Point
                                         double screenDist, double screenWidth, double screenHeight) throws Exception {
@@ -115,8 +127,6 @@ public class Camera {
          ray.normalize();
 
          return new Ray(p,ray);
-
-
 
     };
 
