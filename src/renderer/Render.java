@@ -72,9 +72,7 @@ public class Render
         Color ambientLight = _scene.getAmbientLight().getIntensity();
         Color emissionLight = geometry.getEmmission();
 
-        return new Color((ambientLight.getRed()+emissionLight.getRed())%256,
-                (ambientLight.getGreen()+emissionLight.getGreen())%256,
-                (ambientLight.getBlue()+emissionLight.getBlue())%256);
+        return addColors(ambientLight,emissionLight);
     }
 
     // private Color calcColor(Geometry geometry, Point3D point, Ray ray);
@@ -156,6 +154,10 @@ public class Render
    //     return intersectionPoint;
    // }
 
-    // private Color addColors(Color a, Color b);
+    private Color addColors(Color a, Color b){
+        return new Color((a.getRed()+b.getRed())%256,
+                (a.getGreen()+b.getGreen())%256,
+                (a.getBlue()+b.getBlue())%256);
+    }
 
 }
