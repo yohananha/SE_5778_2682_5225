@@ -1,8 +1,10 @@
 package renderer;
 
+import Elements.LightSource;
 import Geometrics.Geometry;
 import Primitives.Point3D;
 import Primitives.Ray;
+import Primitives.Vector;
 import Scene.Scene;
 
 import java.awt.*;
@@ -98,11 +100,33 @@ public class Render
      * MEANING
      * This function calculate color for point with his geometry color
      **************************************************/
-    private Color calcColor(Geometry geometry, Point3D point){
-        Color ambientLight = _scene.getAmbientLight().getIntensity();
+    private Color calcColor(Geometry geometry, Point3D point) throws Exception {
+        // 1. Emission light:
         Color emissionLight = geometry.getEmmission();
+        // 2. Ambient light:
+        Color ambientLight = _scene.getAmbientLight().getIntensity();
+        // 3. Declare color:
+        Color io = new Color(emissionLight.getRGB()+ambientLight.getRGB());
+        // 3. Iterator
+        Iterator<LightSource> lights = _scene.getLightsIterator();
+        Color specularLight = new Color(0,0,0);
+        Color diffuseLight = new Color(0,0,0);
+        while (lights.hasNext()){
+            LightSource light = lights.next();
+             diffuseLight = calcDiffusiveComp(geometry.getMaterial().getKd(),
+                    geometry.getNormal(point),
+                    light.getL(point),
+                    _scene.getAmbientLight().getIntensity()
+                    );
+             specularLight = calcSpecularComp(geometry.getMaterial().getKs(),
+                    new Vector(point, _scene.getCamera().get_P0()),
+                    geometry.getNormal(point),
+                    light.getL(point),
+                    geometry.getShininess(),
+                    _scene.getAmbientLight().getIntensity());
+        }
 
-        return addColors(ambientLight,emissionLight);
+        return  addColors(io, addColors(diffuseLight,specularLight));
     }
 
     // private Color calcColor(Geometry geometry, Point3D point, Ray ray);
@@ -116,10 +140,25 @@ public class Render
 
     //private boolean occluded(LightSource light, Point3D point,Geometry geometry);
 
-    // private Color calcSpecularComp(double ks, Vector v, Vector normal,
-    //                                Vector l, double shininess, Color lightIntensity);
-    // private Color calcDiffusiveComp(double kd, Vector normal, Vector l,
-    //                                 Color lightIntensity);
+    private Color calcSpecularComp(double ks, Vector v, Vector normal,
+                                    Vector l, double shininess, Color lightIntensity){
+        Vector r = new Vector(normal);
+        l.scale(-2*normal.dotProduct(l));
+        r.add(l);
+        double specular = ks*Math.pow(r.dotProduct(v),shininess);
+        return new Color(lightIntensity.getRed()*(int) specular ,
+                lightIntensity.getGreen()*(int)specular,
+                lightIntensity.getBlue()*(int)specular);
+    };
+     private Color calcDiffusiveComp(double kd, Vector normal, Vector l,
+                                     Color lightIntensity){
+         double dif = kd*normal.dotProduct(l);
+
+         return new Color(lightIntensity.getRed()*(int) dif ,
+                                   lightIntensity.getGreen()*(int)dif,
+                                   lightIntensity.getBlue()*(int)dif);
+     }
+
 
     /*************************************************
      * FUNCTION
@@ -151,31 +190,8 @@ public class Render
          minDistancMap.put(minDistancGeometry,minDistancPoint);
          return minDistancMap;
      }
-   /* /*************************************************
-     * FUNCTION
-     * getClosestPoint
-     * PARAMETERS
-     *  list(point3d)
-     * RETURN VALUE
-     * point3d
-     * MEANING
-     * this functions takes all the points and calculate the closest one to the camera
-     **************************************************/
-   /* private  Point3D getClosestPoint(List<Point3D> intersectionPoints){
 
-        double distance = Double.MAX_VALUE;
-        Point3D P0 = new Point3D(_scene.getCamera().get_P0());
-        Point3D minDistancPoint = null;
 
-        for(Point3D point : intersectionPoints){
-            if(P0.distance(point) < distance){
-                minDistancPoint = new Point3D(point);
-                distance = P0.distance(point);
-            }
-        }
-
-        return minDistancPoint;
-    }*/
     /*************************************************
      * FUNCTION
      * getSceneRayIntersections
