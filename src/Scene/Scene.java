@@ -2,6 +2,7 @@ package Scene;
 
 import Elements.AmbientLight;
 import Elements.Camera;
+import Elements.LightSource;
 import Geometrics.Geometry;
 
 import java.awt.*;
@@ -19,7 +20,7 @@ public class Scene
     private List<Geometry> _geometries;
     private Camera _camera;
     private double _screenDistance;
-    // private List<LightSource> _lights = new ArrayList<LightSource>();
+    private List<LightSource> _lights = new ArrayList<LightSource>();
     private String _sceneName;
 
     // ***************** Constructors ********************** //
@@ -72,5 +73,7 @@ public class Scene
     public Iterator<Geometry> getGeometriesIterator() { return _geometries.iterator(); }
 
     // public void addLight(LightSource light);
-    // public Iterator<LightSource> getLightsIterator();
+    public Iterator<LightSource> getLightsIterator() {
+        return _lights.iterator();
+    }
 }
