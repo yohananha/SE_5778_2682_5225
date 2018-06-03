@@ -116,10 +116,10 @@ public class RenderTest {
                     new Point3D(  0,  -150, -51),
                     new Point3D(-150, -150, -51));
 
-            sphere.setEmmission(new Color (255, 255, 0));
+            sphere.setEmmission(new Color (255, 0, 120));
             triangle.setEmmission(new Color (255, 0, 0));
             triangle2.setEmmission(new Color (0, 255, 0));
-            triangle3.setEmmission(new Color (0, 0, 255));
+            triangle3.setEmmission(new Color (255, 0, 255));
             triangle4.setEmmission(new Color (0, 255, 255));
 
             scene.addGeometry(sphere);

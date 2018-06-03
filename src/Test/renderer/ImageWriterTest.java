@@ -23,7 +23,7 @@ public class ImageWriterTest {
                     imageWriter.writePixel(j, i, 255, 0, 0); // Red
                 else
                 if(i >= 167 && i <= 332 && j >= 0 && j <= 500)
-                    imageWriter.writePixel(j, i, 255, 255, 255);  // Green
+                    imageWriter.writePixel(j, i, 0, 255, 0);  // Green
                 else
                 if(i >= 333 && i <= 500 && j >= 0 && j <= 500)
                     imageWriter.writePixel(j, i, 0, 0, 255); // Blue
