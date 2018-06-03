@@ -2,8 +2,13 @@ package Geometrics;
 
 
 import Primitives.Point3D;
+import Primitives.Ray;
+import Primitives.Vector;
 
-public class Quadrangle extends Triangle{
+import java.util.LinkedList;
+import java.util.List;
+
+public class Quadrangle {
     private Triangle  _tri1;
     private Triangle _tri2;
 
@@ -30,6 +35,23 @@ public class Quadrangle extends Triangle{
     public void setP4(Point3D point){_tri1.setP3(point);
                                      _tri2.setP3(point);}
 
+    public Vector getNormal(Point3D point) throws Exception
+        {
+         return _tri1.getNormal(point);
+        }
+    public List<Point3D> FindIntersections(Ray ray) throws Exception
+    {
+        List<Point3D> ListInter1 = new LinkedList<Point3D>();
+        List<Point3D> ListInter2 = new LinkedList<Point3D>();
+
+        ListInter1= _tri1.FindIntersections(ray);
+        ListInter2= _tri2.FindIntersections(ray);
+
+         ListInter1.addAll(ListInter2);
+         return ListInter1;
+
+
+    }
 }
 
 
