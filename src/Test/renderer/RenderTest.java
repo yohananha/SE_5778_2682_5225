@@ -128,6 +128,8 @@ public class RenderTest {
             scene.addGeometry(triangle3);
             scene.addGeometry(triangle4);
 
+
+
             ImageWriter imageWriter = new ImageWriter("Emmission test1", 500, 500, 500, 500);
 
             Render render = new Render(imageWriter, scene);
@@ -136,6 +138,8 @@ public class RenderTest {
             render.printGrid(50);
             render.writeToImage();
         }
+
+
 
 
     }

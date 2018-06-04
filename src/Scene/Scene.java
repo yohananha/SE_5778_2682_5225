@@ -20,7 +20,7 @@ public class Scene
     private List<Geometry> _geometries;
     private Camera _camera;
     private double _screenDistance;
-    private List<LightSource> _lights = new ArrayList<LightSource>();
+    private List<LightSource> _lights;
     private String _sceneName;
 
     // ***************** Constructors ********************** //
@@ -31,6 +31,7 @@ public class Scene
         this._camera = new Camera();
         this._screenDistance = 100;
         this._geometries = new ArrayList<Geometry>();
+        this._lights = new ArrayList<LightSource>();
         this._sceneName = "scene";
     }
 
@@ -41,6 +42,7 @@ public class Scene
         this._camera = scene.getCamera();
         this._screenDistance = scene.getScreenDistance();
         this._geometries = scene._geometries;
+        this._lights = scene._lights;
         this._sceneName = scene.getSceneName();
     }
 
@@ -52,6 +54,7 @@ public class Scene
         this._camera = camera;
         this._screenDistance = screenDistance;
         this._geometries = new ArrayList<Geometry>();
+        this._lights = new ArrayList<LightSource>();
         this._sceneName = "scene";
     }
 
@@ -72,7 +75,7 @@ public class Scene
     public void addGeometry(Geometry geometry) { _geometries.add(geometry);}
     public Iterator<Geometry> getGeometriesIterator() { return _geometries.iterator(); }
 
-    // public void addLight(LightSource light);
+    public void addLight(LightSource light){_lights.add(light);}
     public Iterator<LightSource> getLightsIterator() {
         return _lights.iterator();
     }
