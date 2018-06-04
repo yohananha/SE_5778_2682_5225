@@ -151,16 +151,16 @@ public class RenderTest {
 
         scene.addGeometry(sphere);
 
-        Triangle triangle1 = new Triangle(new Point3D(  3500,  3500, -2000),
-                new Point3D( -3500, -3500, -1000),
-                new Point3D(  3500, -3500, -2000));
-
-        Triangle triangle2 = new Triangle(new Point3D(  3500,  3500, -2000),
-                new Point3D( -3500,  3500, -1000),
-                new Point3D( -3500, -3500, -1000));
-
-        scene.addGeometry(triangle1);
-        scene.addGeometry(triangle2);
+//        Triangle triangle1 = new Triangle(new Point3D(  3500,  3500, -2000),
+//                new Point3D( -3500, -3500, -1000),
+//                new Point3D(  3500, -3500, -2000));
+//
+//        Triangle triangle2 = new Triangle(new Point3D(  3500,  3500, -2000),
+//                new Point3D( -3500,  3500, -1000),
+//                new Point3D( -3500, -3500, -1000));
+//
+//        scene.addGeometry(triangle1);
+//        scene.addGeometry(triangle2);
 
         scene.addLight(new SpotLight(new Color(255, 100, 100), new Point3D(200, 200, -100),
                 new Vector(-2, -2, -3), 0, 0.000001, 0.0000005));
@@ -175,5 +175,5 @@ public class RenderTest {
 
     }
 
-    
+
     }
