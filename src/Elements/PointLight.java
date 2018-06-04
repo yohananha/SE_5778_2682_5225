@@ -26,7 +26,12 @@ public class PointLight extends Light implements LightSource {
 
         double d = _position.distance(point);
 
-        double Il = 1/(_Kc + (_Kl * d) + (_Kq*Math.pow(d,2)));
+        double Il = 1/(_Kc * (_Kl * d) * (_Kq*Math.pow(d,2)));
+
+        if(Il > 1)
+        {
+            Il = 1;
+        }
 
         return new Color((int)(I0.getRed()*Il),
                 (int)(I0.getGreen()*Il),
