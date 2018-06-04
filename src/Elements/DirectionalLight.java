@@ -28,7 +28,8 @@ public class DirectionalLight extends Light implements LightSource {
 
     public void setDirection(Vector _direction){ this._direction = _direction;}
 
-    public Vector getL(Point3D point){
+    public Vector getL(Point3D point) throws Exception {
+        _direction.normalize();
         return _direction;
     }
 }

@@ -37,6 +37,7 @@ public class PointLight extends Light implements LightSource {
     public Vector getL(Point3D point) throws Exception {
         Vector l = new Vector(_position, point);
         l.normalize();
+
         return l;
     }
 }
