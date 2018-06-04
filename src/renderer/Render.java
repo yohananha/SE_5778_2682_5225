@@ -139,11 +139,14 @@ public class Render
     //private boolean occluded(LightSource light, Point3D point,Geometry geometry);
 
     private Color calcSpecularComp(double ks, Vector v, Vector normal,
-                                    Vector l, double shininess, Color lightIntensity){
+                                    Vector l, double shininess, Color lightIntensity) throws Exception {
         Vector r = new Vector(normal);
         r.scale(-2*normal.dotProduct(l));
         r.add(l);
+        v.normalize();
         double specular = ks*Math.pow(r.dotProduct(v),shininess);
+        if(specular < 0)
+        {specular *= -1;}
         return new Color((int)(lightIntensity.getRed()* specular) ,
                 (int)(lightIntensity.getGreen()*specular),
                 (int)(lightIntensity.getBlue()*specular));
