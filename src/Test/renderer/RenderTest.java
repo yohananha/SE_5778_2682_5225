@@ -182,25 +182,24 @@ public class RenderTest {
        // scene.set_distance(100);
        // scene.set_background(new Color(0,0,0));
        // Geometries geometries = new Geometries();
-        Sphere sphere = new Sphere(60, new Point3D(0, 0, -80));
-        sphere.setShininess(300);
-        sphere.setKd(0.8);
-        sphere.setKs(0.9);
+        Sphere sphere = new Sphere(100, new Point3D(0, 0, -120));
+        sphere.setShininess(1);
         sphere.setEmmission( new Color(241, 6, 151));
         Triangle triangle1 = new Triangle(new Point3D(-250,-250,-120),
                 new Point3D(-250,250,-120),new Point3D(250,-250,-120));
-        triangle1.setEmmission(new Color(0,0,0));
+
 
         Triangle triangle2 = new Triangle(new Point3D(250,250,-120)
                 ,new Point3D(-250,250,-120),new Point3D(250,-250,-120));
-        triangle2.setEmmission(new Color(0,0,0));
+
         scene.addGeometry(sphere);
         scene.addGeometry(triangle1);
         scene.addGeometry(triangle2);
        // scene.set_geometries(geometries);
         //List<LightSource> lights = new ArrayList<LightSource>);
 
-        scene.addLight(new SpotLight(new Color(255,255,255),new Point3D(25,0,0), new Vector(-25,0,80),0,0,0 ));
+        scene.addLight(new SpotLight(new Color(200,200,200),new Point3D(25,0,0)
+                , new Vector(-25,0,80),0,0,0 ));
         ImageWriter imageWriter = new ImageWriter("shadow test1", 500, 500, 500, 500);
         Render testRender = new Render(imageWriter, scene);
         testRender.renderImage();

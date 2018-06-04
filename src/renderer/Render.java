@@ -140,8 +140,9 @@ public class Render
         Point3D geometryPoint = new Point3D(point);
 
         //3.5 Floating point corecction
-        Vector epsVector = new Vector(geometry.getNormal(point));
-        epsVector.scale(2);
+        Vector epsVector = new Vector(0.0000001,0.0000001,0.0000001);
+        //Vector epsVector = new Vector(geometry.getNormal(point));
+        //epsVector.scale(1.0001);
         geometryPoint.add(epsVector);
 
         //4. Construct ray from the point back to the light
