@@ -112,6 +112,7 @@ public class Render
         Color diffuseLight = new Color(0,0,0);
         while (lights.hasNext()) {
             LightSource light = lights.next();
+            /// if th point is hidden under shapes, theres no need in duffuse ans/or specular light
             if (!occluded(light, point, geometry)) {
                 diffuseLight = addColors(diffuseLight, calcDiffusiveComp(geometry.getMaterial().getKd(),
                         geometry.getNormal(point),
