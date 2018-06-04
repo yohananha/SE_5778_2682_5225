@@ -24,11 +24,12 @@ public class SpotLight extends PointLight {
         Vector l = super.getL(point);
         l.normalize();
 
-        double k = _direction.dotProduct(l);
-        if (k>1)
-            k=1;
-        return new Color(((int)(pointLightColor.getRed()* k)%256),
-                ((int)(pointLightColor.getGreen() * k))%256,
-                ((int)(pointLightColor.getBlue()  * k))%256);
+        double k = Math.abs(_direction.dotProduct(l));
+
+        if(k > 1) {k = 1;}
+
+        return new Color((int)(pointLightColor.getRed()* k)%256,
+                (int)(pointLightColor.getGreen() * k)%256,
+                (int)(pointLightColor.getBlue()  * k)%256);
     }
 }

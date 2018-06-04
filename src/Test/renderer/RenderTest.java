@@ -1,7 +1,6 @@
 package Test.renderer;
 
 import Elements.SpotLight;
-import Geometrics.Quadrangle;
 import Geometrics.Sphere;
 import Geometrics.Triangle;
 import Primitives.Point3D;
@@ -146,29 +145,25 @@ public class RenderTest {
     public void shadowTest() throws Exception {
 
         Scene scene = new Scene();
-    /*    Sphere sphere = new Sphere(50, new Point3D(0.0, 0.0, -1000));
+        Sphere sphere = new Sphere(500, new Point3D(0.0, 0.0, -800));
         sphere.setShininess(20);
-        sphere.setEmmission(new Color(0, 0, 100));
+        sphere.setEmmission(new Color(241, 6, 151));
 
-        scene.addGeometry(sphere);*/
+        scene.addGeometry(sphere);
 
-        Quadrangle quadrangle = new Quadrangle(new Point3D(3500,3500,0),new Point3D(-3500,3500,0)
-                                                ,new Point3D(3500,-3500,0), new Point3D(-3500,-3500,0));
-        scene.addGeometry(quadrangle);
-/*Triangle triangle1 = new Triangle(new Point3D(  3500,  3500, -2000),
-new Point3D( -3500, -3500, -1000),
-new Point3D(  3500, -3500, -2000));
+        Triangle triangle1 = new Triangle(new Point3D(  3500,  3500, -1000),
+                new Point3D( -3500, -3500, -1000),
+                new Point3D(  3500, -3500, -1000));
 
-Triangle triangle2 = new Triangle(new Point3D(  3500,  3500, -2000),
-new Point3D( -3500,  3500, -1000),
-new Point3D( -3500, -3500, -1000));
+        Triangle triangle2 = new Triangle(new Point3D(  3500,  3500, -1000),
+                new Point3D( -3500,  3500, -1000),
+                new Point3D( -3500, -3500, -1000));
 
-scene.addGeometry(triangle1);
-scene.addGeometry(triangle2);*/
+       scene.addGeometry(triangle1);
+       scene.addGeometry(triangle2);
 
-
-        scene.addLight(new SpotLight(new Color(255, 100, 100), new Point3D(200, 200, -100),
-                new Vector(-2, -2, -3), 0.00001, 0.000001, 0.0000005));
+        scene.addLight(new SpotLight(new Color(200, 200, 200), new Point3D(200, 200, -100),
+                new Vector(0, 0, -80), 0, 0,0));
 
 
         ImageWriter imageWriter = new ImageWriter("Shadow test", 500, 500, 500, 500);
@@ -180,5 +175,37 @@ scene.addGeometry(triangle2);*/
 
     }
 
+    @Test
+    public void shadowTest1() throws Exception {
+        Scene scene = new Scene();
+       // scene.setCamera(new Camera(new Vector(0, -1, 0), new Vector(0, 0, 1), new Point3D(0, 0, 0)));
+       // scene.set_distance(100);
+       // scene.set_background(new Color(0,0,0));
+       // Geometries geometries = new Geometries();
+        Sphere sphere = new Sphere(60, new Point3D(0, 0, -80));
+        sphere.setShininess(300);
+        sphere.setKd(0.8);
+        sphere.setKs(0.9);
+        sphere.setEmmission( new Color(241, 6, 151));
+        Triangle triangle1 = new Triangle(new Point3D(-250,-250,-120),
+                new Point3D(-250,250,-120),new Point3D(250,-250,-120));
+        triangle1.setEmmission(new Color(0,0,0));
+
+        Triangle triangle2 = new Triangle(new Point3D(250,250,-120)
+                ,new Point3D(-250,250,-120),new Point3D(250,-250,-120));
+        triangle2.setEmmission(new Color(0,0,0));
+        scene.addGeometry(sphere);
+        scene.addGeometry(triangle1);
+        scene.addGeometry(triangle2);
+       // scene.set_geometries(geometries);
+        //List<LightSource> lights = new ArrayList<LightSource>);
+
+        scene.addLight(new SpotLight(new Color(255,255,255),new Point3D(25,0,0), new Vector(-25,0,80),0,0,0 ));
+        ImageWriter imageWriter = new ImageWriter("shadow test1", 500, 500, 500, 500);
+        Render testRender = new Render(imageWriter, scene);
+        testRender.renderImage();
+        testRender.writeToImage();
+
+    }
 
     }

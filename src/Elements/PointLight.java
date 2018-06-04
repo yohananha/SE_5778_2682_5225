@@ -33,9 +33,9 @@ public class PointLight extends Light implements LightSource {
             Il = 1;
         }
 
-        return new Color((int)(I0.getRed()*Il),
-                (int)(I0.getGreen()*Il),
-                (int)(I0.getBlue()*Il));
+        return new Color((int)(I0.getRed()*Il)%256,
+                (int)(I0.getGreen()*Il)%256,
+                (int)(I0.getBlue()*Il)%256);
 
     }
 

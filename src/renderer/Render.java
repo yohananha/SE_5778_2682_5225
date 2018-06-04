@@ -162,23 +162,24 @@ public class Render
         Vector r = new Vector(normal);
         r.scale(-2*normal.dotProduct(l));
         r.add(l);
+        r.normalize();
         v.normalize();
         double specular = ks*Math.pow(r.dotProduct(v),shininess);
         if(specular < 0)
         {specular *= -1;}
-        return new Color((int)(lightIntensity.getRed()* specular) ,
-                (int)(lightIntensity.getGreen()*specular),
-                (int)(lightIntensity.getBlue()*specular));
+        return new Color((int)(lightIntensity.getRed()* specular)%256 ,
+                (int)(lightIntensity.getGreen()*specular)%256,
+                (int)(lightIntensity.getBlue()*specular)%256);
     };
      private Color calcDiffusiveComp(double kd, Vector normal, Vector l,
                                      Color lightIntensity){
-         double dif = kd*normal.dotProduct(l);
+         double dif = Math.abs(kd*normal.dotProduct(l));
 
-         if(dif < 0){dif *= -1;}
 
-         return new Color((int)(lightIntensity.getRed()*dif) ,
-                 (int)(lightIntensity.getGreen()*dif),
-                 (int)(lightIntensity.getBlue()*dif));
+
+         return new Color((int)(lightIntensity.getRed()*dif)%256 ,
+                 (int)(lightIntensity.getGreen()*dif)%256,
+                 (int)(lightIntensity.getBlue()*dif)%256);
      }
 
 
@@ -253,9 +254,19 @@ public class Render
    // }
 
     private Color addColors(Color a, Color b){
-        return new Color((a.getRed()+b.getRed())%256,
-                (a.getGreen()+b.getGreen())%256,
-                (a.getBlue()+b.getBlue())%256);
+
+        int red = a.getRed() + b.getRed();
+        if (red > 255) red = 255;
+
+        int green = a.getGreen() + b.getGreen();
+        if (green > 255) green = 255;
+
+        int blue = a.getBlue() + b.getBlue();
+        if (blue > 255) blue = 255;
+
+        Color x = new Color (red, green, blue);
+
+        return x;
     }
 
 }
