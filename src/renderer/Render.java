@@ -141,7 +141,7 @@ public class Render
     private Color calcSpecularComp(double ks, Vector v, Vector normal,
                                     Vector l, double shininess, Color lightIntensity){
         Vector r = new Vector(normal);
-        l.scale(-2*normal.dotProduct(l));
+        r.scale(-2*normal.dotProduct(l));
         r.add(l);
         double specular = ks*Math.pow(r.dotProduct(v),shininess);
         return new Color((int)(lightIntensity.getRed()* specular) ,
