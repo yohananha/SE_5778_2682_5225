@@ -1,6 +1,7 @@
 package Test.renderer;
 
 import Elements.SpotLight;
+import Geometrics.Quadrangle;
 import Geometrics.Sphere;
 import Geometrics.Triangle;
 import Primitives.Point3D;
@@ -145,22 +146,26 @@ public class RenderTest {
     public void shadowTest() throws Exception {
 
         Scene scene = new Scene();
-        Sphere sphere = new Sphere(500, new Point3D(0.0, 0.0, -1000));
+    /*    Sphere sphere = new Sphere(50, new Point3D(0.0, 0.0, -1000));
         sphere.setShininess(20);
         sphere.setEmmission(new Color(0, 0, 100));
 
-        scene.addGeometry(sphere);
+        scene.addGeometry(sphere);*/
 
-//        Triangle triangle1 = new Triangle(new Point3D(  3500,  3500, -2000),
-//                new Point3D( -3500, -3500, -1000),
-//                new Point3D(  3500, -3500, -2000));
-//
-//        Triangle triangle2 = new Triangle(new Point3D(  3500,  3500, -2000),
-//                new Point3D( -3500,  3500, -1000),
-//                new Point3D( -3500, -3500, -1000));
-//
-//        scene.addGeometry(triangle1);
-//        scene.addGeometry(triangle2);
+        Quadrangle quadrangle = new Quadrangle(new Point3D(3500,3500,0),new Point3D(-3500,3500,0)
+                                                ,new Point3D(3500,-3500,0), new Point3D(-3500,-3500,0));
+        scene.addGeometry(quadrangle);
+/*Triangle triangle1 = new Triangle(new Point3D(  3500,  3500, -2000),
+new Point3D( -3500, -3500, -1000),
+new Point3D(  3500, -3500, -2000));
+
+Triangle triangle2 = new Triangle(new Point3D(  3500,  3500, -2000),
+new Point3D( -3500,  3500, -1000),
+new Point3D( -3500, -3500, -1000));
+
+scene.addGeometry(triangle1);
+scene.addGeometry(triangle2);*/
+
 
         scene.addLight(new SpotLight(new Color(255, 100, 100), new Point3D(200, 200, -100),
                 new Vector(-2, -2, -3), 0.00001, 0.000001, 0.0000005));

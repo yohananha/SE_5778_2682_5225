@@ -110,21 +110,40 @@ public class Render
         Iterator<LightSource> lights = _scene.getLightsIterator();
         Color specularLight = new Color(0,0,0);
         Color diffuseLight = new Color(0,0,0);
-        while (lights.hasNext()){
+        while (lights.hasNext()) {
             LightSource light = lights.next();
-             diffuseLight = addColors(diffuseLight, calcDiffusiveComp(geometry.getMaterial().getKd(),
-                    geometry.getNormal(point),
-                    light.getL(point),
-                    light.getIntensity(point)));
-             specularLight = addColors(specularLight, calcSpecularComp(geometry.getMaterial().getKs(),
-                    new Vector(point, _scene.getCamera().get_P0()),
-                    geometry.getNormal(point),
-                    light.getL(point),
-                    geometry.getShininess(),
-                   light.getIntensity(point)));
+            if (!occluded(light, point, geometry)) {
+                diffuseLight = addColors(diffuseLight, calcDiffusiveComp(geometry.getMaterial().getKd(),
+                        geometry.getNormal(point),
+                        light.getL(point),
+                        light.getIntensity(point)));
+                specularLight = addColors(specularLight, calcSpecularComp(geometry.getMaterial().getKs(),
+                        new Vector(point, _scene.getCamera().get_P0()),
+                        geometry.getNormal(point),
+                        light.getL(point),
+                        geometry.getShininess(),
+                        light.getIntensity(point)));
+            }
         }
-
         return  addColors(addColors(emissionLight,ambientLight), addColors(diffuseLight,specularLight));
+    }
+
+    private boolean occluded(LightSource light, Point3D point, Geometry geometry) throws Exception {
+        //1. Connect the point to the light source
+        Vector lightDirection = light.getL(point);
+        //2. Reverse the vector to point backward to the light source
+        lightDirection.scale(-1);
+
+        //3. the point that send the ray back
+        Point3D geometryPoint = new Point3D(point);
+
+        //4. Construct ray from the point back to the light
+        Ray lightRay = new Ray(geometryPoint, lightDirection);
+        //5. Get all the intersection between the pint and the light source into a mao
+        Map <Geometry,List<Point3D>> intersectionPoint = getSceneRayIntersections(lightRay);
+        //6. If the map is empty - the light goes directly to the point
+        //   Otherwise - there's something between them
+        return !intersectionPoint.isEmpty();
     }
 
     // private Color calcColor(Geometry geometry, Point3D point, Ray ray);
@@ -136,7 +155,6 @@ public class Render
 
     // private Ray constructReflectedRay(Vector normal, Point3D point, Ray inRay);
 
-    //private boolean occluded(LightSource light, Point3D point,Geometry geometry);
 
     private Color calcSpecularComp(double ks, Vector v, Vector normal,
                                     Vector l, double shininess, Color lightIntensity) throws Exception {
