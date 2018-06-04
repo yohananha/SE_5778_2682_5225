@@ -9,9 +9,10 @@ public class DirectionalLight extends Light implements LightSource {
 
     private Vector _direction;
     // ***************** Constructors ********************** //
-    public DirectionalLight(Color color, Vector direction){
+    public DirectionalLight(Color color, Vector direction) throws Exception {
         _color = color;
         _direction = direction;
+        direction.normalize();
     }
     // ***************** Getters/Setters ********************** //
 

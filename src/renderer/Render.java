@@ -115,13 +115,13 @@ public class Render
              diffuseLight = addColors(diffuseLight, calcDiffusiveComp(geometry.getMaterial().getKd(),
                     geometry.getNormal(point),
                     light.getL(point),
-                    _scene.getAmbientLight().getIntensity()));
+                    light.getIntensity(point)));
              specularLight = addColors(specularLight, calcSpecularComp(geometry.getMaterial().getKs(),
                     new Vector(point, _scene.getCamera().get_P0()),
                     geometry.getNormal(point),
                     light.getL(point),
                     geometry.getShininess(),
-                    _scene.getAmbientLight().getIntensity()));
+                   light.getIntensity(point)));
         }
 
         return  addColors(addColors(emissionLight,ambientLight), addColors(diffuseLight,specularLight));
@@ -144,17 +144,17 @@ public class Render
         l.scale(-2*normal.dotProduct(l));
         r.add(l);
         double specular = ks*Math.pow(r.dotProduct(v),shininess);
-        return new Color(lightIntensity.getRed()*(int) specular ,
-                lightIntensity.getGreen()*(int)specular,
-                lightIntensity.getBlue()*(int)specular);
+        return new Color((int)(lightIntensity.getRed()* specular) ,
+                (int)(lightIntensity.getGreen()*specular),
+                (int)(lightIntensity.getBlue()*specular));
     };
      private Color calcDiffusiveComp(double kd, Vector normal, Vector l,
                                      Color lightIntensity){
          double dif = kd*normal.dotProduct(l);
 
-         return new Color(lightIntensity.getRed()*(int) dif ,
-                                   lightIntensity.getGreen()*(int)dif,
-                                   lightIntensity.getBlue()*(int)dif);
+         return new Color((int)(lightIntensity.getRed()*dif) ,
+                 (int)(lightIntensity.getGreen()*dif),
+                 (int)(lightIntensity.getBlue()*dif));
      }
 
 
