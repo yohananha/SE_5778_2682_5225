@@ -155,6 +155,8 @@ public class Render
                                      Color lightIntensity){
          double dif = kd*normal.dotProduct(l);
 
+         if(dif < 0){dif *= -1;}
+
          return new Color((int)(lightIntensity.getRed()*dif) ,
                  (int)(lightIntensity.getGreen()*dif),
                  (int)(lightIntensity.getBlue()*dif));
