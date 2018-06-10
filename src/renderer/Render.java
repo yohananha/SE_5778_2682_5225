@@ -15,9 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-//import Elements.LightSource;
-//import Geometries.FlatGeometry;
-
 
 public class Render
 {
@@ -61,7 +58,16 @@ public class Render
         }
     }
 
-    //private Entry<Geometry, Point3D> findClosesntIntersection(Ray ray);
+    private Entry<Geometry, Point3D> findClosesntIntersection(Ray ray) throws Exception {
+        Map<Geometry, List<Point3D>> intersectionPoints = getSceneRayIntersections(ray);
+
+        if (intersectionPoints.size() == 0)
+            return null;
+
+        Map<Geometry, Point3D> closestPoint = getClosestPoint(intersectionPoints);
+        Entry<Geometry, Point3D> entry = closestPoint.entrySet().iterator().next();
+        return entry;
+    }
 
     /*************************************************
      * FUNCTION
@@ -140,9 +146,9 @@ public class Render
         Point3D geometryPoint = new Point3D(point);
 
         //3.5 Floating point corecction
-        Vector epsVector = new Vector(0.0000001,0.0000001,0.0000001);
-        //Vector epsVector = new Vector(geometry.getNormal(point));
-        //epsVector.scale(1.0001);
+        //Vector epsVector = new Vector(0.0000001,0.0000001,0.0000001);
+        Vector epsVector = new Vector(geometry.getNormal(point));
+        epsVector.scale(2);
         geometryPoint.add(epsVector);
 
         //4. Construct ray from the point back to the light
@@ -160,18 +166,20 @@ public class Render
         return !intersectionPoint.isEmpty();
     }
 
-    private Color calcColor(Geometry geometry, Point3D point, Ray inRay)
-    {
-
-    };
+   // private Color calcColor(Geometry geometry, Point3D point, Ray inRay)
 
     // private Color calcColor(Geometry geometry, Point3D point,
     //                         Ray inRay, int level); // Recursive
 
-    private Ray constructRefractedRay(Geometry geometry, Point3D point,Ray inRay)
-    {
+    private Ray constructRefractedRay(Geometry geometry, Point3D point,Ray inRay) throws Exception {
+        Vector normal = geometry.getNormal(point);
+        normal.scale(-2);
+        point.add(normal);
 
-    };
+        Ray ray =  new Ray(point,inRay.getDirection());
+        //ray.normalize();
+        return ray;
+    }
 
      private Ray constructReflectedRay(Vector normal, Point3D point, Ray inRay) throws Exception {
             Vector _normal = new Vector(normal);

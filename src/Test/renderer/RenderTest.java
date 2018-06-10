@@ -141,20 +141,15 @@ public class RenderTest {
             render.writeToImage();
         }
 
-   @Test
+    @Test
     public void shadowTest() throws Exception {
 
         Scene scene = new Scene();
-       Sphere sphere1 = new Sphere(600, new Point3D(0.0, 0.0, -800));
-       sphere1.setShininess(20);
-       sphere1.setEmmission(new Color(115, 214, 115));
+        Sphere sphere = new Sphere(500, new Point3D(0.0, 0.0, -800));
+        sphere.setShininess(20);
+        sphere.setEmmission(new Color(241, 6, 151));
 
-       Sphere sphere2 = new Sphere(100, new Point3D(200, 200, -200));
-       sphere2.setShininess(20);
-       sphere2.setEmmission(new Color(214, 101, 135));
-
-       scene.addGeometry(sphere1);
-       scene.addGeometry(sphere2);
+        scene.addGeometry(sphere);
 
         Triangle triangle1 = new Triangle(new Point3D(  3500,  3500, -1000),
                 new Point3D( -3500, -3500, -1000),
@@ -167,12 +162,39 @@ public class RenderTest {
        scene.addGeometry(triangle1);
        scene.addGeometry(triangle2);
 
-       Triangle triangle3 = new Triangle(new Point3D(200,200,-500),new Point3D(200,500,-500),new Point3D(500,200,-500));
-       triangle3.setEmmission(new Color(115, 214, 115));
-       scene.addGeometry(triangle3);
+        scene.addLight(new SpotLight(new Color(200, 200, 200), new Point3D(500, 500, -100),
+                new Vector(0, 0, -80), 0.0001, 0.0001,0.0001));
 
-        scene.addLight(new SpotLight(new Color(200, 200, 200), new Point3D(200, 200, -100),
-                new Vector(0, 0, -80), 0, 0,0));
+
+        ImageWriter imageWriter = new ImageWriter("Shadow test SpotLight1", 500, 500, 500, 500);
+
+        Render render = new Render(imageWriter, scene);
+
+        render.renderImage();
+        render.writeToImage();
+
+    }
+
+    @Test
+    public void shadowTest1() throws Exception {
+        Scene scene = new Scene();
+        Sphere sphere = new Sphere(500, new Point3D(0.0, 0.0, -800));
+        sphere.setShininess(20);
+        sphere.setEmmission(new Color(241, 6, 151));
+
+        scene.addGeometry(sphere);
+
+        Triangle triangle1 = new Triangle(new Point3D(  300,  300, -500),
+                new Point3D( -300, -300, -500),
+                new Point3D(  300, -300, -500));
+
+
+
+        scene.addGeometry(triangle1);
+
+
+        scene.addLight(new SpotLight(new Color(200, 200, 200), new Point3D(-500, -500, -100),
+                new Vector(100, 100, -80), 0.0001, 0.0001,0.0001));
 
 
         ImageWriter imageWriter = new ImageWriter("Shadow test", 500, 500, 500, 500);
@@ -185,35 +207,47 @@ public class RenderTest {
     }
 
     @Test
-    public void shadowTest1() throws Exception {
+    public void spotLightTest2() throws Exception {
+
+
         Scene scene = new Scene();
-       // scene.setCamera(new Camera(new Vector(0, -1, 0), new Vector(0, 0, 1), new Point3D(0, 0, 0)));
-       // scene.set_distance(100);
-       // scene.set_background(new Color(0,0,0));
-       // Geometries geometries = new Geometries();
-        Sphere sphere = new Sphere(100, new Point3D(0, 0, -120));
-        sphere.setShininess(1);
-        sphere.setEmmission( new Color(241, 6, 151));
-        Triangle triangle1 = new Triangle(new Point3D(-250,-250,-120),
-                new Point3D(-250,250,-120),new Point3D(250,-250,-120));
-
-
-        Triangle triangle2 = new Triangle(new Point3D(250,250,-120)
-                ,new Point3D(-250,250,-120),new Point3D(250,-250,-120));
-
+        //scene.setScreenDistance(200);
+        Sphere sphere = new Sphere( 500, new Point3D(0.0, 0.0, -1000));
+        sphere.setEmmission(new Color(241, 6, 151));
+        sphere.setShininess(20);
         scene.addGeometry(sphere);
+
+        Triangle triangle = new Triangle(new Point3D(-125, -225, -260),
+                new Point3D(-225, -125, -260),
+                new Point3D(-225, -225, -270));
+
+        triangle.setEmmission(new Color(68, 242, 16));
+
+        Triangle triangle1 = new Triangle(new Point3D(  3500,  3500, -1000),
+                new Point3D( -3500, -3500, -1000),
+                new Point3D(  3500, -3500, -1000));
+
+        Triangle triangle2 = new Triangle(new Point3D(  3500,  3500, -1000),
+                new Point3D( -3500,  3500, -1000),
+                new Point3D( -3500, -3500, -1000));
+
         scene.addGeometry(triangle1);
         scene.addGeometry(triangle2);
-       // scene.set_geometries(geometries);
-        //List<LightSource> lights = new ArrayList<LightSource>);
 
-        scene.addLight(new SpotLight(new Color(200,200,200),new Point3D(25,0,0)
-                , new Vector(-25,0,80),0,0,0 ));
-        ImageWriter imageWriter = new ImageWriter("shadow test1", 500, 500, 500, 500);
-        Render testRender = new Render(imageWriter, scene);
-        testRender.renderImage();
-        testRender.writeToImage();
+        triangle.setShininess(4);
+        scene.addGeometry(triangle);
+
+
+        scene.addLight(new SpotLight(new Color(200, 200, 200), new Point3D(-250, -250, -150),
+                new Vector(2, 2, -2), 0.0001, 0.0001,0.0001));
+
+        ImageWriter imageWriter = new ImageWriter("Spot test 2", 500, 500, 500, 500);
+
+        Render render = new Render(imageWriter, scene);
+
+        render.renderImage();
+        //render.printGrid(50);
+        render.writeToImage();
 
     }
-
     }
