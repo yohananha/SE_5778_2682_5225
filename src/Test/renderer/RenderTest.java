@@ -141,15 +141,20 @@ public class RenderTest {
             render.writeToImage();
         }
 
-    @Test
+   @Test
     public void shadowTest() throws Exception {
 
         Scene scene = new Scene();
-        Sphere sphere = new Sphere(500, new Point3D(0.0, 0.0, -800));
-        sphere.setShininess(20);
-        sphere.setEmmission(new Color(241, 6, 151));
+       Sphere sphere1 = new Sphere(600, new Point3D(0.0, 0.0, -800));
+       sphere1.setShininess(20);
+       sphere1.setEmmission(new Color(115, 214, 115));
 
-        scene.addGeometry(sphere);
+       Sphere sphere2 = new Sphere(100, new Point3D(200, 200, -200));
+       sphere2.setShininess(20);
+       sphere2.setEmmission(new Color(214, 101, 135));
+
+       scene.addGeometry(sphere1);
+       scene.addGeometry(sphere2);
 
         Triangle triangle1 = new Triangle(new Point3D(  3500,  3500, -1000),
                 new Point3D( -3500, -3500, -1000),
@@ -161,6 +166,10 @@ public class RenderTest {
 
        scene.addGeometry(triangle1);
        scene.addGeometry(triangle2);
+
+       Triangle triangle3 = new Triangle(new Point3D(200,200,-500),new Point3D(200,500,-500),new Point3D(500,200,-500));
+       triangle3.setEmmission(new Color(115, 214, 115));
+       scene.addGeometry(triangle3);
 
         scene.addLight(new SpotLight(new Color(200, 200, 200), new Point3D(200, 200, -100),
                 new Vector(0, 0, -80), 0, 0,0));

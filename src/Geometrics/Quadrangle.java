@@ -8,7 +8,7 @@ import Primitives.Vector;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Quadrangle extends Geometry{
+public class Quadrangle extends Geometry implements FlatGeometry{
     private Triangle  _tri1;
     private Triangle _tri2;
 

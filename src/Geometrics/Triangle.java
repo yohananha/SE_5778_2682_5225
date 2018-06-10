@@ -7,7 +7,7 @@ import Primitives.Vector;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Triangle extends Geometry {
+public class Triangle extends Geometry implements FlatGeometry{
 
     private Point3D _p1;
     private Point3D _p2;

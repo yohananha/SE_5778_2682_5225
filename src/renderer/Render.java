@@ -160,14 +160,33 @@ public class Render
         return !intersectionPoint.isEmpty();
     }
 
-    // private Color calcColor(Geometry geometry, Point3D point, Ray ray);
+    private Color calcColor(Geometry geometry, Point3D point, Ray inRay)
+    {
+
+    };
 
     // private Color calcColor(Geometry geometry, Point3D point,
     //                         Ray inRay, int level); // Recursive
 
-    // private Ray constructRefractedRay(Geometry geometry, Point3D point,Ray inRay);
+    private Ray constructRefractedRay(Geometry geometry, Point3D point,Ray inRay)
+    {
 
-    // private Ray constructReflectedRay(Vector normal, Point3D point, Ray inRay);
+    };
+
+     private Ray constructReflectedRay(Vector normal, Point3D point, Ray inRay) throws Exception {
+            Vector _normal = new Vector(normal);
+            // D*N
+            _normal.dotProduct(new Vector(inRay.getDirection()));
+            //- 2(d*N)
+            _normal.scale(-2);
+            // -2(D*N)N
+            _normal.crossProduct(normal);
+            Ray ray = new  Ray(inRay);
+            // D-2(D*N)N
+            ray.add(_normal);
+            ray.normalize();
+            return ray;
+     };
 
 
     private Color calcSpecularComp(double ks, Vector v, Vector normal,
