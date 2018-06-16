@@ -52,7 +52,7 @@ public class Render
                 }
                 else{
                     Entry<Geometry, Point3D> closestPoint = getClosestPoint(intersectionPoints).entrySet().iterator().next();
-                    _imageWriter.writePixel(j,i,calcColor(closestPoint.getKey(),closestPoint.getValue()));
+                    _imageWriter.writePixel(j,i,calcColor(closestPoint.getKey(),closestPoint.getValue(),ray));
                 }
             }
         }
@@ -166,36 +166,142 @@ public class Render
         return !intersectionPoint.isEmpty();
     }
 
-   // private Color calcColor(Geometry geometry, Point3D point, Ray inRay)
+    private Color calcColor(Geometry geometry, Point3D point, Ray inRay) throws Exception {
+        return calcColor(geometry, point, inRay, 0);
+    }
 
-    // private Color calcColor(Geometry geometry, Point3D point,
-    //                         Ray inRay, int level); // Recursive
+     private Color calcColor(Geometry geometry, Point3D point,Ray inRay, int level) throws Exception {
+         if (level == RECURSION_LEVEL){
+             return new Color(0, 0, 0);
+         }
 
-    private Ray constructRefractedRay(Geometry geometry, Point3D point,Ray inRay) throws Exception {
+         Color ambientLight = _scene.getAmbientLight().getIntensity();
+         Color emissionLight = geometry.getEmmission();
+
+         Color inherentColors = addColors(ambientLight, emissionLight);
+
+         Iterator<LightSource> lights = _scene.getLightsIterator();
+
+         Color lightReflected = new Color(0, 0, 0);
+
+         while (lights.hasNext()){
+
+             LightSource light = lights.next();
+
+             if (!occluded(light, point, geometry)){
+
+                 Color lightIntensity = light.getIntensity(point);
+
+
+                 Color lightDiffuse = calcDiffusiveComp(geometry.getMaterial().getKd(),
+                         geometry.getNormal(point),
+                         light.getL(point),
+                         lightIntensity);
+
+
+                 Color lightSpecular = calcSpecularComp(geometry.getMaterial().getKs(),
+                         new Vector(point, _scene.getCamera().get_P0()),
+                         geometry.getNormal(point),
+                         light.getL(point),
+                         geometry.getShininess(),
+                         lightIntensity);
+
+                 lightReflected = addColors(lightDiffuse, lightSpecular);
+             }
+         }
+
+         Color I0 = addColors(inherentColors, lightReflected);
+
+
+         //**// Recursive calls
+
+         // Recursive call for a reflected ray
+         Ray reflectedRay = constructReflectedRay(geometry.getNormal(point), point, inRay);
+         Entry<Geometry, Point3D> reflectedEntry = findClosesntIntersection(reflectedRay);
+         Color reflected = new Color(0, 0, 0);
+         if (reflectedEntry != null){
+             reflected = calcColor(reflectedEntry.getKey(), reflectedEntry.getValue(), reflectedRay, level + 1);
+             double kr = geometry.getMaterial().getKr();
+             reflected = new Color ((int)(reflected.getRed() * kr), (int)(reflected.getGreen() * kr),(int)(reflected.getBlue() * kr));
+         }
+
+         // Recursive call for a refracted ray
+         Ray refractedRay = constructRefractedRay(geometry, point, inRay);
+         Entry<Geometry, Point3D> refractedEntry = findClosesntIntersection(refractedRay);
+         Color refracted = new Color(0, 0, 0);
+         if (refractedEntry != null){
+             refracted = calcColor(refractedEntry.getKey(), refractedEntry.getValue(), refractedRay, level + 1);
+             double kt = geometry.getMaterial().getKt();
+             refracted = new Color ((int)(refracted.getRed() * kt), (int)(refracted.getGreen() * kt),(int)(refracted.getBlue() * kt));
+         }
+
+
+         //**// End of recursive calls
+
+         Color envColors = addColors(reflected, refracted);
+
+         Color finalColor = addColors(envColors, I0);
+
+         return finalColor;
+     }
+//    private Ray constructRefractedRay(Geometry geometry, Point3D point,Ray inRay) throws Exception {
+//        Vector normal = geometry.getNormal(point);
+//        normal.scale(-2);
+//        point.add(normal);
+//
+//        Ray ray =  new Ray(point,inRay.getDirection());
+//        //ray.normalize();
+//        return ray;
+//    }
+//
+//     private Ray constructReflectedRay(Vector normal, Point3D point, Ray inRay) throws Exception {
+//            Vector _normal = new Vector(normal);
+//            // D*N
+//            _normal.dotProduct(new Vector(inRay.getDirection()));
+//            //- 2(d*N)
+//            _normal.scale(-2);
+//            // -2(D*N)N
+//            _normal.crossProduct(normal);
+//            Ray ray = new  Ray(inRay);
+//            // D-2(D*N)N
+//            ray.add(_normal);
+//            ray.normalize();
+//            return ray;
+//     };
+
+    private Ray constructRefractedRay(Geometry geometry, Point3D point, Ray inRay) throws Exception {
+
         Vector normal = geometry.getNormal(point);
         normal.scale(-2);
         point.add(normal);
 
-        Ray ray =  new Ray(point,inRay.getDirection());
-        //ray.normalize();
-        return ray;
+        if (geometry instanceof FlatGeometry){
+            return new Ray (point, inRay.getDirection());
+        } else {
+            // Here, Snell's law can be implemented.
+            // The refraction index of both materials had to be derived
+            return new Ray (point, inRay.getDirection());
+        }
+
     }
 
-     private Ray constructReflectedRay(Vector normal, Point3D point, Ray inRay) throws Exception {
-            Vector _normal = new Vector(normal);
-            // D*N
-            _normal.dotProduct(new Vector(inRay.getDirection()));
-            //- 2(d*N)
-            _normal.scale(-2);
-            // -2(D*N)N
-            _normal.crossProduct(normal);
-            Ray ray = new  Ray(inRay);
-            // D-2(D*N)N
-            ray.add(_normal);
-            ray.normalize();
-            return ray;
-     };
+    private Ray constructReflectedRay(Vector normal, Point3D point, Ray inRay) throws Exception {
 
+        Vector l = inRay.getDirection();
+        l.normalize();
+
+        normal.scale(-2 * l.dotProduct(normal));
+        l.add(normal);
+
+        Vector R = new Vector(l);
+        R.normalize();
+
+        point.add(normal);
+
+        Ray reflectedRay = new Ray(point, R);
+
+        return reflectedRay;
+    }
 
     private Color calcSpecularComp(double ks, Vector v, Vector normal,
                                     Vector l, double shininess, Color lightIntensity) throws Exception {
