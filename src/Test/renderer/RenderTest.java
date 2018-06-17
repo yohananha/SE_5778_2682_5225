@@ -1,6 +1,8 @@
 package Test.renderer;
 
 import Elements.SpotLight;
+import Geometrics.Geometry;
+import Geometrics.Quadrangle;
 import Geometrics.Sphere;
 import Geometrics.Triangle;
 import Primitives.Point3D;
@@ -370,5 +372,68 @@ public class RenderTest {
             render.writeToImage();
         }
 
+    @Test
+    public void IdoYohananTest() throws Exception {
+
+        Scene scene = new Scene();
+        scene.setScreenDistance(50);
+
+        Geometry[] shapes = {
+                new Quadrangle(new Point3D(264.5, 21.5,-55),new Point3D(277.5, 14.5,-55),new Point3D(283.5, -42.52,-55),new Point3D(260.591, -63.5,-55)),//ear-1
+                new Quadrangle(new Point3D(53.591, 21.5,-55),new Point3D(57.5, -63.5,-55),new Point3D(34.59, -42.5,-55),new Point3D(40.591, 14.5,-55)),//ear
+                new Quadrangle(new Point3D(208.5, 152.5,-54),new Point3D(220.5, 145.5,-54),new Point3D(253.5, 62.5,-54),new Point3D(248.5, 29.5,-54)),//face right 0
+                new Quadrangle(new Point3D(208.5, 152.5,-54),new Point3D(264.5, -20.5,-54),new Point3D(249.5, -93.5,-54),new Point3D(213.5, -129.5,-54)),
+                new Quadrangle(new Point3D(208.5, 152.5,-54),new Point3D(187, 97,-54),new Point3D(157, 97,-54),new Point3D(213.5, -129.5,-54)),
+                new Quadrangle(new Point3D(213.5, -129.5,-54),new Point3D(207.27, -160.19,-54),new Point3D(158, -182,-54),new Point3D(157, 97,-54)),
+                new Quadrangle(new Point3D(157, 97,-54),new Point3D(100.01, -130,-54),new Point3D(109.815, -160.19,-54),new Point3D(158, -182,-54)),//face left 0
+                new Quadrangle(new Point3D(100.01, -130,-54),new Point3D(157, 97,-54),new Point3D(127.087, 97,-54),new Point3D(106.87, 152.5,-54)),
+                new Quadrangle(new Point3D(106.87, 152.5,-54),new Point3D(49.59, -20.5,-54),new Point3D(64.59, -93.5,-54),new Point3D(100.01, -130,-54)),
+                new Quadrangle(new Point3D(106.87, 152.5,-54),new Point3D(93.59, 145.5,-54),new Point3D(60.59, 62.5,-54),new Point3D(65.59, 29.5,-54)),
+                new Quadrangle(new Point3D(139.5, -117.5,-54),new Point3D(107.5, -93.5,-54),new Point3D(206.5, -93.5,-54),new Point3D(181.5, 117.5,-54)),//smile
+                new Quadrangle(new Point3D(158.5, 170.5,-53),new Point3D(209.5, 152.5,-53),new Point3D(187.5, 97.5,-54),new Point3D(158.5, 97.5,-54)),//hair right 1
+                new Triangle(new Point3D(158.5, 170.5,-53),new Point3D(205.5, 166.5,-53),new Point3D(249.5, 128.5,-53)),
+
+                new Triangle(new Point3D(50, 20,-50),new Point3D(86, 85,-50),new Point3D(37, 94,-50)),
+                new Triangle(new Point3D(12, -24,-50),new Point3D(52, 19,-50),new Point3D(37, 94,-50)),
+                new Triangle(new Point3D(85, 84,-50),new Point3D(159, 99,-50),new Point3D(120, 138,-50)),
+                new Quadrangle(new Point3D(25, 34,-50),new Point3D(37, 94,-50),new Point3D(-124, 125,-50),new Point3D(-96, 89,-50)),
+                new Triangle(new Point3D(37, 94,-50),new Point3D(21, 179,-50),new Point3D(-124, 125,-50))
+        };
+
+        Color [] colors = {
+                new Color(32,178,170),
+                new Color(60,179,119),
+                new Color(70,130,180),
+                new Color(70,130,180),
+                new Color(34,140,34),
+                new Color(32,178,170),
+                new Color(60,179,119),
+                new Color(70,130,180),
+                new Color(70,130,180),
+                new Color(34,140,34),
+                new Color(32,178,170),
+                new Color(60,179,119),
+                new Color(70,130,180),
+                new Color(70,130,180),
+                new Color(34,140,34),
+                new Color(32,178,170)
+        };
+
+        // x = 650 - x (picture)
+        // y = y (picture) - 650
+        for (int i = 0; i < shapes.length; i++)
+        {
+            shapes[i].setEmmission(colors[i]);
+            scene.addGeometry(shapes[i]);
+        }
+
+        ImageWriter imageWriter = new ImageWriter("IdoYohananTest", 1300, 1300, 1300, 1300);
+
+        Render render = new Render(imageWriter, scene);
+
+        render.renderImage();
+        //render.printGrid(25);
+        render.writeToImage();
+    }
 
 }
