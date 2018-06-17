@@ -58,6 +58,25 @@ public class Render
         }
     }
 
+    public void renderImage1() throws Exception {
+        for (int i = 0 ; i < _imageWriter.getWidth(); i++){
+            for (int j = 0; j < _imageWriter.getHeight(); j++){
+                Ray ray=_scene.getCamera().constructRayThroughPixel(_imageWriter.getNx(),
+                        _imageWriter.getNy(),j,i,_scene.getScreenDistance()
+                        ,_imageWriter.getWidth()
+                        ,_imageWriter.getHeight());
+                Map<Geometry, List<Point3D>> intersectionPoints = getSceneRayIntersections(ray);
+                if(intersectionPoints.isEmpty()){
+                    _imageWriter.writePixel(j,i,_scene.getBackground());
+                }
+                else{
+                    Entry<Geometry, Point3D> closestPoint = getClosestPoint(intersectionPoints).entrySet().iterator().next();
+                    _imageWriter.writePixel(j,i,calcColor(closestPoint.getKey(),closestPoint.getValue()));
+                }
+            }
+        }
+    }
+
     private Entry<Geometry, Point3D> findClosesntIntersection(Ray ray) throws Exception {
         Map<Geometry, List<Point3D>> intersectionPoints = getSceneRayIntersections(ray);
 
@@ -114,26 +133,8 @@ public class Render
         Color ambientLight = _scene.getAmbientLight().getIntensity();
         // 3. Declare color:
         //Color io = addColors(emissionLight,ambientLight);
-        Iterator<LightSource> lights = _scene.getLightsIterator();
-        Color specularLight = new Color(0,0,0);
-        Color diffuseLight = new Color(0,0,0);
-        while (lights.hasNext()) {
-            LightSource light = lights.next();
-            /// if th point is hidden under shapes, theres no need in duffuse ans/or specular light
-            if (!occluded(light, point, geometry)) {
-                diffuseLight = addColors(diffuseLight, calcDiffusiveComp(geometry.getMaterial().getKd(),
-                        geometry.getNormal(point),
-                        light.getL(point),
-                        light.getIntensity(point)));
-                specularLight = addColors(specularLight, calcSpecularComp(geometry.getMaterial().getKs(),
-                        new Vector(point, _scene.getCamera().get_P0()),
-                        geometry.getNormal(point),
-                        light.getL(point),
-                        geometry.getShininess(),
-                        light.getIntensity(point)));
-            }
-        }
-        return  addColors(addColors(emissionLight,ambientLight), addColors(diffuseLight,specularLight));
+
+        return  addColors(emissionLight,ambientLight);
     }
 
     private boolean occluded(LightSource light, Point3D point, Geometry geometry) throws Exception {

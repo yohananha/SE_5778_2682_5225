@@ -381,24 +381,183 @@ public class RenderTest {
         Geometry[] shapes = {
                 new Quadrangle(new Point3D(264.5, 21.5,-55),new Point3D(277.5, 14.5,-55),new Point3D(283.5, -42.52,-55),new Point3D(260.591, -63.5,-55)),//ear-1
                 new Quadrangle(new Point3D(53.591, 21.5,-55),new Point3D(57.5, -63.5,-55),new Point3D(34.59, -42.5,-55),new Point3D(40.591, 14.5,-55)),//ear
+
                 new Quadrangle(new Point3D(208.5, 152.5,-54),new Point3D(220.5, 145.5,-54),new Point3D(253.5, 62.5,-54),new Point3D(248.5, 29.5,-54)),//face right 0
                 new Quadrangle(new Point3D(208.5, 152.5,-54),new Point3D(264.5, -20.5,-54),new Point3D(249.5, -93.5,-54),new Point3D(213.5, -129.5,-54)),
                 new Quadrangle(new Point3D(208.5, 152.5,-54),new Point3D(187, 97,-54),new Point3D(157, 97,-54),new Point3D(213.5, -129.5,-54)),
                 new Quadrangle(new Point3D(213.5, -129.5,-54),new Point3D(207.27, -160.19,-54),new Point3D(158, -182,-54),new Point3D(157, 97,-54)),
+
                 new Quadrangle(new Point3D(157, 97,-54),new Point3D(100.01, -130,-54),new Point3D(109.815, -160.19,-54),new Point3D(158, -182,-54)),//face left 0
                 new Quadrangle(new Point3D(100.01, -130,-54),new Point3D(157, 97,-54),new Point3D(127.087, 97,-54),new Point3D(106.87, 152.5,-54)),
                 new Quadrangle(new Point3D(106.87, 152.5,-54),new Point3D(49.59, -20.5,-54),new Point3D(64.59, -93.5,-54),new Point3D(100.01, -130,-54)),
                 new Quadrangle(new Point3D(106.87, 152.5,-54),new Point3D(93.59, 145.5,-54),new Point3D(60.59, 62.5,-54),new Point3D(65.59, 29.5,-54)),
-                new Quadrangle(new Point3D(139.5, -117.5,-54),new Point3D(107.5, -93.5,-54),new Point3D(206.5, -93.5,-54),new Point3D(181.5, 117.5,-54)),//smile
-                new Quadrangle(new Point3D(158.5, 170.5,-53),new Point3D(209.5, 152.5,-53),new Point3D(187.5, 97.5,-54),new Point3D(158.5, 97.5,-54)),//hair right 1
-                new Triangle(new Point3D(158.5, 170.5,-53),new Point3D(205.5, 166.5,-53),new Point3D(249.5, 128.5,-53)),
 
-                new Triangle(new Point3D(50, 20,-50),new Point3D(86, 85,-50),new Point3D(37, 94,-50)),
-                new Triangle(new Point3D(12, -24,-50),new Point3D(52, 19,-50),new Point3D(37, 94,-50)),
-                new Triangle(new Point3D(85, 84,-50),new Point3D(159, 99,-50),new Point3D(120, 138,-50)),
-                new Quadrangle(new Point3D(25, 34,-50),new Point3D(37, 94,-50),new Point3D(-124, 125,-50),new Point3D(-96, 89,-50)),
-                new Triangle(new Point3D(37, 94,-50),new Point3D(21, 179,-50),new Point3D(-124, 125,-50))
+                new Quadrangle(new Point3D(139.5, -117.5,-54),new Point3D(107.5, -93.5,-54),new Point3D(206.5, -93.5,-54),new Point3D(181.5, 117.5,-54)),//smile
+
+                new Quadrangle(new Point3D(158.5, 170.5,-53),new Point3D(209.5, 152.5,-53),new Point3D(187.5, 97.5,-53),new Point3D(158.5, 97.5,-53)),//hair right 1
+                new Triangle(new Point3D(158.5, 170.5,-53),new Point3D(205.5, 166.5,-53),new Point3D(249.5, 128.5,-53)),
+                new Triangle(new Point3D(249.5, 128.5,-53),new Point3D(221.5, 145.5,-53),new Point3D(254.5, 62.5,-53)),
+                new Quadrangle(new Point3D(249.5, 128.5,-53),new Point3D(263.5, 74.5,-53),new Point3D(263.5, -10.5,-53),new Point3D(249.5, 29.5,-54)),
+
+                new Quadrangle(new Point3D(158.5, 170.5,-53),new Point3D(158.5, 97.5,-53),new Point3D(127.5, 97.5,-53),new Point3D(105.5, 152.5,-53)),//hair left 1
+                new Triangle(new Point3D(158.5, 170.5,-53),new Point3D(109.5, 166.5,-53),new Point3D(65.5, 128.5,-53)),
+                new Triangle(new Point3D(93.5, 145.5,-53),new Point3D(65.5, 128.5,-53),new Point3D(60.5, 62.5,-53)),
+                new Quadrangle(new Point3D(65.5, 128.5,-53),new Point3D(51.5, 74.5,-53),new Point3D(51.5, -10.5,-53),new Point3D(65.56, 29.5,-54)),
+
+                new Triangle(new Point3D(214.5, -103.5,-53),new Point3D(205.5, -82.5,-53),new Point3D(206.5, -93.5,-53)),//mustache
+                new Quadrangle(new Point3D(206.5, -93.5,-53),new Point3D(205.5, -82.5,-53),new Point3D(182.52, -71.35,-53),new Point3D(156.5, -93.5,-53)),
+                new Quadrangle(new Point3D(156.5, -93.5,-53),new Point3D(132.5, -71.5,-53),new Point3D(157.5, -75,-53),new Point3D(182.52, -71.35,-53)),
+                new Quadrangle(new Point3D(156.5, -93.5,-53),new Point3D(132.5, -71.5,-53),new Point3D(108.5, -82.5,-53),new Point3D(107.5, -93.5,-53)),
+                new Triangle(new Point3D(108.5, -82.5,-53),new Point3D(107.5, -93.5,-53),new Point3D(99.5, -103.5,-53)),
+
+                new Quadrangle(new Point3D(139.5, -130.5,-53),new Point3D(181.5, -130.5,-53),new Point3D(169.5, -148.5,-53),new Point3D(144.5, -148.5,-53)),//zvov
+
+                new Quadrangle(new Point3D(264.5, -20.5,-53),new Point3D(249.5, -93.5,-53),new Point3D(256.5, -108.5,-53),new Point3D(213.5, -129.5,-53)),//beard right
+                new Quadrangle(new Point3D(256.5, -108.5,-53),new Point3D(213.5, -129.5,-53),new Point3D(204.5, -160.5,-53),new Point3D(205.5, -173.5,-53)),
+                new Quadrangle(new Point3D(204.5, -160.5,-53),new Point3D(205.5, -173.5,-53),new Point3D(157.5, -189.5,-53),new Point3D(156.5, -181.5,-53)),
+
+                new Quadrangle(new Point3D(157.5, -189.5,-53),new Point3D(156.5, -181.5,-53),new Point3D(108.5, -173.5,-53),new Point3D(109.5, -160.5,-53)),//beard left
+                new Quadrangle(new Point3D(108.5, -173.5,-53),new Point3D(109.5, -160.5,-53),new Point3D(100.5, -129.5,-53),new Point3D(57.5, -108.5,-53)),
+                new Quadrangle(new Point3D(100.5, -129.5,-53),new Point3D(57.5, -108.5,-53),new Point3D(64.5, -93.5,-53),new Point3D(49.5, -20.5,-53)),
+
+                new Sphere(10,new Point3D(204,-4,-52)),//eyes 2
+                new Sphere(10,new Point3D(115,-4,-52)),
+
+                new Triangle(new Point3D(200.5, 57.5,-51),new Point3D(156.5, 65.2,-51),new Point3D(119.5, 57.5,-51)),//forehead 3
+
+                new Quadrangle(new Point3D(179.5, 26.5,-51),new Point3D(179.5, 19.5,-51),new Point3D(228.5, 19.5,-51),new Point3D(228.5, 26.5,-51)),//eyebrow right
+                new Quadrangle(new Point3D(139.5, 26.5,-51),new Point3D(139.5, 19.5,-51),new Point3D(90.5, 19.5,-51),new Point3D(90.5, 26.5,-51)),//eyebrow left
+
+                new Quadrangle(new Point3D(185.5, -10.5,-51),new Point3D(187.5, -37.5,-51),new Point3D(156.5, -75,-51),new Point3D(156.5, 22.3,-51)),//Nose
+                new Quadrangle(new Point3D(156.5, -75,-51),new Point3D(156.5, 22.3,-51),new Point3D(128.5, -10.5,-51),new Point3D(126.5, -37.5,-51)),//
+                new Quadrangle(new Point3D(187.5, -37.5,-51),new Point3D(156.5, -75,-51),new Point3D(200.5, -45.5,-51),new Point3D(200.5, -68.5,-51)),//
+                new Quadrangle(new Point3D(126.5, -37.5,-51),new Point3D(156.5, -75,-51),new Point3D(113.5, -45.5,-51),new Point3D(113.5, -68.5,-51)),//
+
+                new Quadrangle(new Point3D(106.5, -93.5,-51),new Point3D(139.5, -117.5,-51),new Point3D(181.5, -117.5,-51),new Point3D(139.5, -130.5,-51)),//lips
+                new Quadrangle(new Point3D(181.5, -117.5,-51),new Point3D(139.5, -130.5,-51),new Point3D(206.5, -93.5,-51),new Point3D(185.5, -130.5,-51)),//
+
         };
+
+
+        Geometry[] yohanan = {
+                // ears
+                new Quadrangle(new Point3D(-268.5, 26.5,-55),new Point3D(-283.5, 25.5,-55),new Point3D(-283.5, -39.5,-55),new Point3D(-278.5, -47.5,-55)),//ear-1
+                new Triangle(new Point3D(-278.5, -47.5,-55),new Point3D(-268.5, 26.5,-55),new Point3D(-266.5, -47.5,-55)),
+                new Quadrangle(new Point3D(-74.5, 25.5,-55),new Point3D(-74.5, -39.5,-55),new Point3D(-79.5, -47.5,-55),new Point3D(-89.6, -26.9,-55)),//ear-1
+                new Triangle(new Point3D(-79.5, -47.5,-55),new Point3D(-89.6, 26.9,-55),new Point3D(-91.5, -47.5,-55)),
+                // face
+                new Quadrangle(new Point3D(-265, 107,-54),new Point3D(-272, 63,-54),new Point3D(-259, -67,-54),new Point3D(-252, 118,-54)),
+                new Quadrangle(new Point3D(-259, -67,-54),new Point3D(-252, 118,-54),new Point3D(-179, 111,-54),new Point3D(-179, -60,-54)),
+                new Quadrangle(new Point3D(-179, 111,-54),new Point3D(-179, -60,-54),new Point3D(-106, 118,-54),new Point3D(-99, -67,-54)),
+                new Quadrangle(new Point3D(-106, 118,-54),new Point3D(-99, -67,-54),new Point3D(-93, 107,-54),new Point3D(-86, 63,-54)),
+                // lower face
+                new Quadrangle(new Point3D(-131.5, -73.5,-54),new Point3D(-126.5, -73.5,-54),new Point3D(-143.5, -93.5,-54),new Point3D(-137.5, 107.5,-54)),
+                new Quadrangle(new Point3D(-143.5, -93.5,-54),new Point3D(-137.5, -107.5,-54),new Point3D(-161.5, -93.5,-54),new Point3D(-154.5, -107.5,-54)),
+                new Quadrangle(new Point3D(-196.5, -93.5,-54),new Point3D(-204.5, -107.5,-54),new Point3D(-220.5, -107.5,-54),new Point3D(-213.5, -93.5,-54)),
+                new Triangle(new Point3D(-220.5, -107.5,-54),new Point3D(-213.5, 93.5,-54),new Point3D(-229.5, -72.5,-54)),
+                // Sdmile
+                new Quadrangle(new Point3D(-229.5, -72.5,-53),new Point3D(-131.5, -73.5,-53),new Point3D(-143.5, -89.5,-53),new Point3D(-211.5, -90.5,-53)),
+                // Hair
+                new Quadrangle(new Point3D(-268.5, 30.5,-52),new Point3D(-281.5, 72.5,-52),new Point3D(-278.5, 113.5,-52),new Point3D(-264.5, 166.5,-52)),
+                new Quadrangle(new Point3D(-264.5, 166.5,-52),new Point3D(-266.5, -105.5,-52),new Point3D(-251.5, 117.5,-52),new Point3D(-134.5, 110.5,-52)),
+                new Quadrangle(new Point3D(-264.5, 166.5,-52),new Point3D(-134.5, 110.5,-52),new Point3D(-105.5, 138.5,-52),new Point3D(-89.5, 122.5,-52)),
+                new Quadrangle(new Point3D(-89.5, 122.5,-52),new Point3D(-106, 118,-52),new Point3D(-92.76, 105.5,-52),new Point3D(-89.5, 27.5,-52)),
+                new Quadrangle(new Point3D(-89.5, 27.5,-52),new Point3D(-89.5, 122.5,-52),new Point3D(-79.5, 90.5,-52),new Point3D(-79.5, 51.5,-52)),
+                // Beard left
+                new Quadrangle(new Point3D(-268.5, 30.5,-52),new Point3D(-272.5, -14.2,-52),new Point3D(-250, -152.5,-52),new Point3D(-252.1, -66.5,-52)),
+                new Quadrangle(new Point3D(-250, -152.5,-52),new Point3D(-252.1, -66.5,-52),new Point3D(-230.5, -73.5,-52),new Point3D(-219.5, -107.5,-52)),
+                // Beard right
+                new Quadrangle(new Point3D(-89.6, 26.9,-52),new Point3D(-84, -14.2,-52),new Point3D(-105.5, -152.5,-52),new Point3D(-104.6, -65,-52)),
+                new Quadrangle(new Point3D(-105.5, -152.5,-52),new Point3D(-104, -65,-52),new Point3D(-126.5, -73.5,-52),new Point3D(-137.5, -107.5,-52)),
+                // Mustache
+                new Quadrangle(new Point3D(-252.1, -66.5,-52),new Point3D(-179.5, -58.5,-52),new Point3D(-179.5, -73.5,-52),new Point3D(-229.5, -72.5,-52)),
+                new Quadrangle(new Point3D(-179.5, -58.5,-52),new Point3D(-179.5, -73.5,-52),new Point3D(-104, -65,-52),new Point3D(-126.5, -73.5,-52)),
+                // Chin beard
+                new Quadrangle(new Point3D(-209.5, -173.5,-52),new Point3D(-146.5, -173.5,-52),new Point3D(-105.5, -152.5,-52),new Point3D(-250, -152.5,-52)),
+
+
+        new Quadrangle(new Point3D(-105.5, -152.5,-52),new Point3D(-250, -152.5,-52),new Point3D(-219.5, -107.5,-52),new Point3D(-137.5, -107.5,-52)),
+                new Quadrangle(new Point3D(-196.5, -93.5,-52),new Point3D(-161.5, -93.5,-52),new Point3D(-154, -107.5,-52),new Point3D(-205, -107.5,-52)),
+                // Face detail
+                new Triangle(new Point3D(-228.5, 72.5,-51),new Point3D(-179, 75,-51),new Point3D(-129.5, 72.5,-51)),
+                // Eyebrows
+                new Quadrangle(new Point3D(-101.5, 39.5,-51),new Point3D(-101.5, 26.5,-51),new Point3D(-161.5, 26.5,-51),new Point3D(-161.5, 39.5,-51)),
+                new Quadrangle(new Point3D(-196.5, 39.5,-51),new Point3D(-256.5, 26.5,-51),new Point3D(-196.5, 26.5,-51),new Point3D(-256.5, 39.5,-51)),
+                // Nose
+                new Quadrangle(new Point3D(-164.5, 17.5,-51),new Point3D(-161.5, -56.5,-51),new Point3D(-178.5, 21.5,-51),new Point3D(-178.5, -63.5,-51)),
+                new Quadrangle(new Point3D(-178.5, 21.5,-51),new Point3D(-178.5, -63.5,-51),new Point3D(-192.9, 17.5,-51),new Point3D(-195.9, -56.5,-51)),
+                // Lips
+                new Quadrangle(new Point3D(-211.5, -90.5,-51),new Point3D(-213.5, -93.5,-51),new Point3D(-143.5, -93.5,-51),new Point3D(-143.5, -89.5,-51)),
+                new Triangle(new Point3D(-143.5, -93.5,-51),new Point3D(-143.5, -89.5,-51),new Point3D(-131.5, -73.5,-51)),
+                new Triangle(new Point3D(-211.5, -90.5,-51),new Point3D(-213.5, -93.5,-51),new Point3D(-229.5, -72.5,-51)),
+                // Eyes
+                new Sphere(10, new Point3D(-215,-1,-55)),
+                new Sphere(10, new Point3D(-144, -1 , -55))
+        };
+
+        Color [] yohananColors = {
+                //ears
+                new Color(239, 159, 120),
+                new Color(239, 159, 120),
+                new Color(239, 159, 120),
+                new Color(239, 159, 120),
+                //face
+                new Color(247, 174, 146),
+                new Color(247, 174, 146),
+                new Color(247, 174, 146),
+                new Color(247, 174, 146),
+                new Color(247, 174, 146),
+                new Color(247, 174, 146),
+                new Color(247, 174, 146),
+                new Color(247, 174, 146),
+                // smile
+                new Color(255, 255, 255),
+                //hsir
+                new Color(0, 0, 0),
+                new Color(0, 0, 0),
+                new Color(0, 0, 0),
+                new Color(0, 0, 0),
+                new Color(0, 0, 0),
+                //beard
+                new Color(0, 0, 0),
+                new Color(0, 0, 0),
+                new Color(0, 0, 0),
+                new Color(0, 0, 0),
+                //nustache
+                new Color(0, 0, 0),
+                new Color(0, 0, 0),
+                //chin
+                new Color(0, 0, 0),
+                new Color(0, 0, 0),
+                new Color(0, 0, 0),
+                // detail
+                new Color(203, 135, 102),
+                //eye brows
+                new Color(0, 0, 0)
+                ,new Color(0, 0, 0),
+                // nose
+                new Color(203, 135, 102),
+                new Color(203, 135, 102),
+                //lips
+                new Color(203, 135, 102),
+                new Color(203, 135, 102),
+                new Color(203, 135, 102),
+                // eyes
+                new Color(64, 46, 32),
+                new Color(64, 46, 32),
+                new Color(70,130,180),
+                new Color(34,140,34),
+                new Color(32,178,170),
+                new Color(32,178,170)
+        };
+
+        // x = 650 - x (picture)
+        // y = y (picture) - 650
+        for (int i = 0; i < yohanan.length; i++)
+        {
+            yohanan[i].setEmmission(yohananColors[i]);
+            scene.addGeometry(yohanan[i]);
+        }
 
         Color [] colors = {
                 new Color(32,178,170),
@@ -416,7 +575,34 @@ public class RenderTest {
                 new Color(70,130,180),
                 new Color(70,130,180),
                 new Color(34,140,34),
-                new Color(32,178,170)
+                new Color(32,178,170),
+                new Color(60,179,119),
+                new Color(70,130,180),
+                new Color(70,130,180),
+                new Color(34,140,34),
+                new Color(32,178,170),
+                new Color(60,179,119),
+                new Color(70,130,180),
+                new Color(70,130,180),
+                new Color(34,140,34),
+                new Color(32,178,170),
+                new Color(60,179,119),
+                new Color(70,130,180),
+                new Color(70,130,180),
+                new Color(34,140,34),
+                new Color(32,178,170),
+                new Color(60,179,119),
+                new Color(70,130,180),
+                new Color(70,130,180),
+                new Color(34,140,34),
+                new Color(32,178,170),
+                new Color(60,179,119),
+                new Color(70,130,180),
+                new Color(70,130,180),
+                new Color(34,140,34),
+                new Color(32,178,170),
+                new Color(60,179,119)
+
         };
 
         // x = 650 - x (picture)
@@ -427,11 +613,11 @@ public class RenderTest {
             scene.addGeometry(shapes[i]);
         }
 
-        ImageWriter imageWriter = new ImageWriter("IdoYohananTest", 1300, 1300, 1300, 1300);
+        ImageWriter imageWriter = new ImageWriter("IdoYohananTest", 700, 700, 700, 700);
 
         Render render = new Render(imageWriter, scene);
 
-        render.renderImage();
+        render.renderImage1();
         //render.printGrid(25);
         render.writeToImage();
     }
