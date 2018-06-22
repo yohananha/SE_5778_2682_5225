@@ -17,6 +17,17 @@ public class SpotLight extends PointLight {
 
     }
     // ***************** Getters/Setters ********************** //
+
+    /*************************************************
+     * FUNCTION
+     * getIntensity
+     * PARAMETERS
+     * Point3D
+     * RETURN VALUE
+     * Color
+     * MEANING
+     * This functions computes the intensity of the light cy the distance from the point
+     /*********************************************/
     public Color getIntensity(Point3D point) throws Exception {
 
         Color pointLightColor = super.getIntensity(point);

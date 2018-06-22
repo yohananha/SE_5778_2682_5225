@@ -209,6 +209,28 @@ public class RenderTest {
     }
 
     @Test
+    public void  spointlight () throws Exception
+    {
+        Scene scene = new Scene();
+        Sphere sphere = new Sphere( 500, new Point3D(0.0, 0.0, -1000));
+        sphere.setEmmission(new Color(241, 6, 151));
+        sphere.setShininess(20);
+        scene.addGeometry(sphere);
+
+        scene.addLight(new SpotLight(new Color(200, 200, 200), new Point3D(-250, -250, -150),
+                new Vector(2, 2, -2), 0.0001, 0.0001,0.0001));
+
+        ImageWriter imageWriter = new ImageWriter("spot tese", 500, 500, 500, 500);
+
+        Render render = new Render(imageWriter, scene);
+
+        render.renderImage();
+        //render.printGrid(50);
+        render.writeToImage();
+
+    }
+
+    @Test
     public void spotLightTest2() throws Exception {
 
 

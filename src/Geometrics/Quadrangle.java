@@ -34,11 +34,36 @@ public class Quadrangle extends Geometry implements FlatGeometry{
     public void setP3(Point3D point){_tri2.setP2(point);}
     public void setP4(Point3D point){_tri1.setP3(point);
                                      _tri2.setP3(point);}
-
+    /*************************************************
+     * FUNCTION
+     * getNormal
+     * PARAMETERS
+     * Point3D point
+     * RETURN VALUE
+     * Vector who is the normal to the point
+     * MEANING
+     * This functions computes a normal vector into specific point
+     * SEE ALSO
+     * Vector->Normalize
+     * Triangle -> getNormal
+     **************************************************/
     public Vector getNormal(Point3D point) throws Exception
-        {
+    {
          return _tri1.getNormal(point);
-        }
+    }
+
+    /*************************************************
+     * FUNCTION
+     * FindIntersections
+     * PARAMETERS
+     * ray
+     * RETURN VALUE
+     * List<Point3D>
+     * MEANING
+     * This functions computes a all the intersections of specific ray with the triangle
+     * SEE ALSO
+     * Geomerty-> FindIntersections
+     **************************************************/
     public List<Point3D> FindIntersections(Ray ray) throws Exception
     {
         List<Point3D> ListInter1 = new LinkedList<Point3D>();
@@ -49,8 +74,6 @@ public class Quadrangle extends Geometry implements FlatGeometry{
 
          ListInter1.addAll(ListInter2);
          return ListInter1;
-
-
     }
 }
 

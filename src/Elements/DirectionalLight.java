@@ -20,10 +20,22 @@ public class DirectionalLight extends Light implements LightSource {
     public Color getIntensity() {
         return _color;
     }
-
+    /*************************************************
+     * FUNCTION
+     * getIntensity
+     * PARAMETERS
+     * Point3D
+     * RETURN VALUE
+     * LColor
+     * MEANING
+     * This functions get a point and return the color in the same area eithou any change
+     * SEE ALSO
+     * Geomerty-> FindIntersections
+     /*********************************************/
     public Color getIntensity(Point3D point){
         return getIntensity();
     }
+
     public Vector getDirection(){ return _direction; }
 
     public void setDirection(Vector _direction){ this._direction = _direction;}
