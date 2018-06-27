@@ -1,41 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="guiTest">
-  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="6" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="7" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="969" height="623"/>
+      <xy x="20" y="20" width="1419" height="623"/>
     </constraints>
     <properties>
       <background color="-8092288"/>
+      <font name="Open Sans Hebrew" size="28"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="a6992" class="javax.swing.JTextArea" binding="pictureBuilderTextArea" default-binding="true">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-8092288"/>
-          <columns value="0"/>
-          <disabledTextColor color="-16777216"/>
-          <enabled value="false"/>
-          <font name="Open Sans Hebrew Extra Bold" size="72"/>
-          <rows value="0"/>
-          <text value="Picture Builder"/>
-        </properties>
-      </component>
       <component id="34544" class="javax.swing.JRadioButton" binding="radioButtonSpot">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-8092288"/>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="98b55" class="javax.swing.JRadioButton" binding="radioButtonRecursive">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -44,7 +20,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="4aec6" class="javax.swing.JRadioButton" binding="radioButtonFace">
+      <component id="98b55" class="javax.swing.JRadioButton" binding="radioButtonRecursive">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -53,9 +29,18 @@
           <text value=""/>
         </properties>
       </component>
+      <component id="4aec6" class="javax.swing.JRadioButton" binding="radioButtonFace">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-8092288"/>
+          <text value=""/>
+        </properties>
+      </component>
       <component id="7d1d2" class="javax.swing.JTextArea" binding="shadowTestTextArea" default-binding="true">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
@@ -74,7 +59,7 @@
       </component>
       <component id="49f97" class="javax.swing.JTextArea" binding="recursiveTestTextArea" default-binding="true">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
@@ -88,7 +73,7 @@
       </component>
       <component id="3103d" class="javax.swing.JTextArea" binding="faceTestTextArea" default-binding="true">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
@@ -102,7 +87,7 @@
       </component>
       <component id="4267" class="javax.swing.JTextArea" binding="lightColorTextArea" default-binding="true">
         <constraints>
-          <grid row="1" column="2" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="2" column="2" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
@@ -116,7 +101,7 @@
       </component>
       <component id="ae86b" class="javax.swing.JTextArea" binding="gTextArea" default-binding="true">
         <constraints>
-          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
@@ -131,7 +116,7 @@
       </component>
       <component id="c5a71" class="javax.swing.JTextArea" binding="bTextArea" default-binding="true">
         <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
@@ -145,7 +130,7 @@
       </component>
       <component id="4b5a3" class="javax.swing.JTextField" binding="textFieldR">
         <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -156,7 +141,7 @@
       </component>
       <component id="46e05" class="javax.swing.JTextField" binding="textFieldG">
         <constraints>
-          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -167,7 +152,7 @@
       </component>
       <component id="2821f" class="javax.swing.JTextField" binding="textFieldB">
         <constraints>
-          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -178,7 +163,7 @@
       </component>
       <component id="ec3b5" class="javax.swing.JTextArea" binding="fileNameTextArea" default-binding="true">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="5" column="2" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
@@ -192,7 +177,7 @@
       </component>
       <component id="e3fbe" class="javax.swing.JTextField" binding="textFieldFileName">
         <constraints>
-          <grid row="5" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="6" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -203,7 +188,7 @@
       </component>
       <component id="c3c4b" class="javax.swing.JButton" binding="STARTButton" default-binding="true">
         <constraints>
-          <grid row="4" column="0" row-span="2" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="2" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-12828863"/>
@@ -214,7 +199,7 @@
       </component>
       <component id="8fcdc" class="javax.swing.JTextArea" binding="rTextArea" default-binding="true">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
@@ -234,6 +219,74 @@
           <selectionStart value="1"/>
           <tabSize value="10"/>
           <text value="R"/>
+        </properties>
+      </component>
+      <component id="a6992" class="javax.swing.JTextArea" binding="pictureBuilderTextArea" default-binding="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8092288"/>
+          <columns value="0"/>
+          <disabledTextColor color="-16777216"/>
+          <enabled value="false"/>
+          <font name="Open Sans Hebrew Extra Bold" size="72"/>
+          <rows value="0"/>
+          <text value="Picture Builder"/>
+        </properties>
+      </component>
+      <component id="b9db3" class="javax.swing.JTextArea" binding="textAreaAngel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8092288"/>
+          <disabledTextColor color="-16777216"/>
+          <enabled value="false"/>
+          <font name="Open Sans Hebrew" size="28"/>
+          <selectionColor color="-4473925"/>
+          <text value="Angle"/>
+          <visible value="true"/>
+        </properties>
+      </component>
+      <component id="90925" class="javax.swing.JTextField" binding="textFieldAngle">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-197635"/>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="f69ff" class="javax.swing.JTextField" binding="a0TextField" default-binding="true">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="b1aa9" class="javax.swing.JTextArea" binding="itensityTextArea" default-binding="true">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8092288"/>
+          <disabledTextColor color="-16777216"/>
+          <enabled value="false"/>
+          <font name="Open Sans Hebrew" size="28"/>
+          <text value="Itensity"/>
         </properties>
       </component>
     </children>

@@ -33,6 +33,10 @@ public class guiTest {
     private JTextArea fileNameTextArea;
     private JTextField textFieldFileName;
     private JButton STARTButton;
+    private JTextArea itensityTextArea;
+    private JTextArea textAreaAngel;
+    private JTextField textFieldAngle;
+    private JTextField a0TextField;
 
 
     public guiTest() {
