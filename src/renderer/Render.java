@@ -137,6 +137,17 @@ public class Render
         return  addColors(emissionLight,ambientLight);
     }
 
+    /*************************************************
+     * FUNCTION
+     * occluded
+     * PARAMETERS
+     * LightSource, point3d, Geometry
+     * RETURN VALUE
+     * boolean
+     * MEANING
+     * This function check for specific point if thers more then one object how stand in fron of him,
+     * and return true only if we have the frontal point
+     **************************************************/
     private boolean occluded(LightSource light, Point3D point, Geometry geometry) throws Exception {
         //1. Connect the point to the light source
         Vector lightDirection = light.getL(point);
@@ -167,10 +178,30 @@ public class Render
         return !intersectionPoint.isEmpty();
     }
 
+    /*************************************************
+     * FUNCTION
+     * calcColor
+     * PARAMETERS
+     * Geometry, point3d
+     * RETURN VALUE
+     * color
+     * MEANING
+     * This function calculate color for point with his geometry color
+     **************************************************/
     private Color calcColor(Geometry geometry, Point3D point, Ray inRay) throws Exception {
         return calcColor(geometry, point, inRay, 0);
     }
 
+    /*************************************************
+     * FUNCTION
+     * calcColor
+     * PARAMETERS
+     * Geometry, point3d
+     * RETURN VALUE
+     * color
+     * MEANING
+     * This function calculate color for point with his geometry color
+     **************************************************/
      private Color calcColor(Geometry geometry, Point3D point,Ray inRay, int level) throws Exception {
          if (level == RECURSION_LEVEL){
              return new Color(0, 0, 0);
@@ -245,31 +276,17 @@ public class Render
 
          return finalColor;
      }
-//    private Ray constructRefractedRay(Geometry geometry, Point3D point,Ray inRay) throws Exception {
-//        Vector normal = geometry.getNormal(point);
-//        normal.scale(-2);
-//        point.add(normal);
-//
-//        Ray ray =  new Ray(point,inRay.getDirection());
-//        //ray.normalize();
-//        return ray;
-//    }
-//
-//     private Ray constructReflectedRay(Vector normal, Point3D point, Ray inRay) throws Exception {
-//            Vector _normal = new Vector(normal);
-//            // D*N
-//            _normal.dotProduct(new Vector(inRay.getDirection()));
-//            //- 2(d*N)
-//            _normal.scale(-2);
-//            // -2(D*N)N
-//            _normal.crossProduct(normal);
-//            Ray ray = new  Ray(inRay);
-//            // D-2(D*N)N
-//            ray.add(_normal);
-//            ray.normalize();
-//            return ray;
-//     };
 
+    /*************************************************
+     * FUNCTION
+     * constructRefractedRay
+     * PARAMETERS
+     * Geometry, point3d, Ray
+     * RETURN VALUE
+     * ray
+     * MEANING
+     * This function calculate the refracted ray towards the next object
+     **************************************************/
     private Ray constructRefractedRay(Geometry geometry, Point3D point, Ray inRay) throws Exception {
 
         Vector normal = geometry.getNormal(point);
@@ -279,13 +296,20 @@ public class Render
         if (geometry instanceof FlatGeometry){
             return new Ray (point, inRay.getDirection());
         } else {
-            // Here, Snell's law can be implemented.
-            // The refraction index of both materials had to be derived
             return new Ray (point, inRay.getDirection());
         }
 
     }
-
+    /*************************************************
+     * FUNCTION
+     * constructReflectedRay
+     * PARAMETERS
+     * Vector, point3d, Ray
+     * RETURN VALUE
+     * Ray
+     * MEANING
+     * This function calculate the reflected ray from the surface
+     **************************************************/
     private Ray constructReflectedRay(Vector normal, Point3D point, Ray inRay) throws Exception {
 
         Vector l = inRay.getDirection();
@@ -304,6 +328,17 @@ public class Render
         return reflectedRay;
     }
 
+    /*************************************************
+     * FUNCTION
+     * calcSpecularComp
+     * PARAMETERS
+     * double ks, Vector v, Vector normal,
+     * Vector l, double shininess, Color lightIntensity
+     * RETURN VALUE
+     * color
+     * MEANING
+     * This function calculate the specular factor and change the color byy it
+     **************************************************/
     private Color calcSpecularComp(double ks, Vector v, Vector normal,
                                     Vector l, double shininess, Color lightIntensity) throws Exception {
         Vector r = new Vector(normal);
@@ -318,11 +353,22 @@ public class Render
                 (int)(lightIntensity.getGreen()*specular)%256,
                 (int)(lightIntensity.getBlue()*specular)%256);
     };
+
+    /*************************************************
+     * FUNCTION
+     * calcDiffusiveComp
+     * PARAMETERS
+     * double kd, Vector normal, Vector l,
+     * Color lightIntensity
+     * RETURN VALUE
+     * color
+     * MEANING
+     * This function calculate the diffusive factor and change the color byy it
+     **************************************************/
      private Color calcDiffusiveComp(double kd, Vector normal, Vector l,
-                                     Color lightIntensity){
+                                     Color lightIntensity)
+     {
          double dif = Math.abs(kd*normal.dotProduct(l));
-
-
 
          return new Color((int)(lightIntensity.getRed()*dif)%256 ,
                  (int)(lightIntensity.getGreen()*dif)%256,
@@ -386,20 +432,16 @@ public class Render
         return intersectionPoint;
     }
 
-   // private  List<Point3D> getSceneRayIntersections(Ray ray) throws Exception {
-   //     Iterator<Geometry> geometryIterator = _scene.getGeometriesIterator();
-   //     List<Point3D> intersectionPoint = new ArrayList<Point3D>();
-
-   //     while(geometryIterator.hasNext()){
-   //         Geometry geometry = geometryIterator.next();
-   //         List<Point3D> geomtryIntersectionPoint = geometry.FindIntersections(ray);
-   //         if (!geomtryIntersectionPoint.isEmpty())
-   //             intersectionPoint.addAll(geomtryIntersectionPoint);
-   //     }
-
-   //     return intersectionPoint;
-   // }
-
+    /*************************************************
+     * FUNCTION
+     * addColors
+     * PARAMETERS
+     * color
+     * RETURN VALUE
+     * color
+     * MEANING
+     * this functions get two different color and add them one to each other
+     **************************************************/
     private Color addColors(Color a, Color b){
 
         int red = a.getRed() + b.getRed();

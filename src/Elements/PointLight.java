@@ -20,6 +20,16 @@ public class PointLight extends Light implements LightSource {
     // ***************** Getters/Setters ********************** //
     public Color getIntensity(){return _color;}
 
+    /*************************************************
+     * FUNCTION
+     * getIntensity
+     * PARAMETERS
+     * Point3D
+     * RETURN VALUE
+     * Color
+     * MEANING
+     * This functions computes the intensity of the light cy the distance from the point
+     /*********************************************/
     public Color getIntensity(Point3D point) throws Exception {
 
         Color I0 = this.getIntensity();
