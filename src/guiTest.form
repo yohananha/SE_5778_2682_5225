@@ -249,7 +249,7 @@
           <enabled value="false"/>
           <font name="Open Sans Hebrew" size="28"/>
           <selectionColor color="-4473925"/>
-          <text value="Angle"/>
+          <text value="Angle (0-180)"/>
           <visible value="true"/>
         </properties>
       </component>
@@ -264,7 +264,7 @@
           <text value="0"/>
         </properties>
       </component>
-      <component id="f69ff" class="javax.swing.JTextField" binding="a0TextField" default-binding="true">
+      <component id="f69ff" class="javax.swing.JTextField" binding="intensityField" default-binding="true">
         <constraints>
           <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -275,7 +275,7 @@
           <text value="0"/>
         </properties>
       </component>
-      <component id="b1aa9" class="javax.swing.JTextArea" binding="itensityTextArea" default-binding="true">
+      <component id="b1aa9" class="javax.swing.JTextArea" binding="intensity01TextArea" default-binding="true">
         <constraints>
           <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
@@ -286,7 +286,7 @@
           <disabledTextColor color="-16777216"/>
           <enabled value="false"/>
           <font name="Open Sans Hebrew" size="28"/>
-          <text value="Itensity"/>
+          <text value="Intensity (0-1)"/>
         </properties>
       </component>
     </children>

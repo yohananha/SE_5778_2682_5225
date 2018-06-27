@@ -33,10 +33,10 @@ public class guiTest {
     private JTextArea fileNameTextArea;
     private JTextField textFieldFileName;
     private JButton STARTButton;
-    private JTextArea itensityTextArea;
+    private JTextArea intensity01TextArea;
     private JTextArea textAreaAngel;
     private JTextField textFieldAngle;
-    private JTextField a0TextField;
+    private JTextField intensityField;
 
 
     public guiTest() {
@@ -75,16 +75,18 @@ public class guiTest {
             public void actionPerformed(ActionEvent e) {
                 String fileName = textFieldFileName.getText();
 
-                int R = Integer.parseInt(textFieldR.getText());
-                int G = Integer.parseInt(textFieldG.getText());
-                int B = Integer.parseInt(textFieldB.getText());
+                double intensity = Double.parseDouble(intensityField.getText());
+
+                int R = (int) (Integer.parseInt(textFieldR.getText())*intensity);
+                int G = (int)(Integer.parseInt(textFieldG.getText())*intensity);
+                int B = (int)(Integer.parseInt(textFieldB.getText())*intensity);
 
 
                 if(radioButtonSpot.isSelected()){
                     Scene scene = new Scene();
                     Sphere sphere = new Sphere(500, new Point3D(0.0, 0.0, -800));
                     sphere.setShininess(20);
-                    sphere.setEmmission(new Color(241, 6, 151));
+                    sphere.setEmmission(new Color((int)(241*intensity), (int) (6*intensity), (int) (151*intensity)));
 
                     scene.addGeometry(sphere);
 
@@ -451,6 +453,7 @@ public class guiTest {
         frame.setVisible(true);
 
     }
+
 
 }
 
