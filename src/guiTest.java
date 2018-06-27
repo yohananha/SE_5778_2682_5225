@@ -77,6 +77,8 @@ public class guiTest {
 
                 double intensity = Double.parseDouble(intensityField.getText());
 
+                double alpha = Double.parseDouble((textFieldAngle.getText()));
+
                 int R = (int) (Integer.parseInt(textFieldR.getText())*intensity);
                 int G = (int)(Integer.parseInt(textFieldG.getText())*intensity);
                 int B = (int)(Integer.parseInt(textFieldB.getText())*intensity);
@@ -104,7 +106,7 @@ public class guiTest {
 
 
                     try {
-                        scene.addLight(new SpotLight(new Color(R,G,B), new Point3D(500, 500, -100),
+                        scene.addLight(new SpotLight(new Color(R,G,B), new Point3D(500*Math.cos(alpha), 500*Math.sin(alpha), -100),
                                 new Vector(0, 0, -80), 0.0001, 0.0001,0.0001));
                     } catch (Exception e1) {
                         e1.printStackTrace();
@@ -130,13 +132,13 @@ public class guiTest {
 
                     Sphere sphere = new Sphere(300, new Point3D(-550, -500, -1000));
                     sphere.setShininess(20);
-                    sphere.setEmmission(new Color(0, 0, 100));
+                    sphere.setEmmission(new Color((int)(0*intensity), (int)(0*intensity), (int)(100*intensity)));
                     sphere.setKt(0.5);
                     scene.addGeometry(sphere);
 
                     Sphere sphere2 = new Sphere(150, new Point3D(-550, -500, -1000));
                     sphere2.setShininess(20);
-                    sphere2.setEmmission(new Color(100, 20, 20));
+                    sphere2.setEmmission(new Color((int)(100*intensity), (int)(20*intensity), (int)(20*intensity)));
                     sphere2.setKt(0);
                     scene.addGeometry(sphere2);
 
@@ -158,7 +160,7 @@ public class guiTest {
 
 
                     try {
-                        scene.addLight(new SpotLight(new Color(R,G,B),  new Point3D(200, 200, -150),
+                        scene.addLight(new SpotLight(new Color(R,G,B),  new Point3D(200*Math.cos(alpha), 200*Math.sin(alpha), -150),
                                 new Vector(-2, -2, -3), 0, 0.00001, 0.000005));
                     } catch (Exception e1) {
                         e1.printStackTrace();
